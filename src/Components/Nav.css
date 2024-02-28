@@ -1,0 +1,39 @@
+
+.wrapper{
+    width: 1440px;
+    background-color: #E1E0E0;
+    display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+nav{
+    width: 915px;
+    height:auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 128px;
+}
+
+.nav>img{
+    width: 288px;
+    height: 54px;
+}
+ul{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+
+ul>li{
+    margin-left: 15px;
+}
+
+ul>li>a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+}
