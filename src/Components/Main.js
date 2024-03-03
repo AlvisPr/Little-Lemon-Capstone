@@ -4,22 +4,17 @@ import StarRoundedIcon from '@mui/icons-material/StarRounded';
 
 
 
-function Main() {
+function Main({onReserveClick}) {
   return (
     <>
       <div className="first__container__wrapper">
-        <div className="content__wrapper">
           <div className="textblock">
             <h2>Little Lemon</h2>
             <h3>Chicago</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Aut eos culpa unde quisquam magni accusantium in ullam qui
-              placeat nostrum veniam, error, amet accusamus modi, delectus
-              optio dolor. Laudantium, voluptate?</p>
-            <button>Reserve Table</button>
+            <p>Experience a taste of the Mediterranean at Little Lemon. Indulge in authentic dishes bursting with flavor, from savory kebabs to vibrant salads. Each bite is a journey to sun-kissed shores, crafted with care and using only the freshest ingredients. Discover your paradise today.</p>
+            <button onClick={onReserveClick}>Reserve Table</button>
           </div>
-          <img src="https://images.unsplash.com/photo-1625430173218-af251641feb9?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-        </div>
+          <img src="https://images.unsplash.com/photo-1458644267420-66bc8a5f21e4?q=80&w=2500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
       </div>
 
 
@@ -38,31 +33,31 @@ function Main() {
                 <h3>Greek Salad</h3>
                 <h3>$13</h3>
               </div>
-              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores voluptates id fugit ab hic sapiente ducimus eaque sed repudiandae quibusdam!</p>
+              <p>Classic Greek salad: Crisp lettuce, tomatoes, cucumbers, red onions, olives, and feta cheese, with olive oil and herbs.</p>
               <button>Order Now!</button>
             </div>
           </div>
 
           <div className="card">
-            <img src="https://images.unsplash.com/photo-1607532941433-304659e8198a?q=80&w=1378&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Greek Salad" />
+            <img src="https://images.pexels.com/photos/6287520/pexels-photo-6287520.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Greek Salad" />
             <div className='card__content'>
               <div className='card__title'>
-                <h3>Greek Salad</h3>
-                <h3>$13</h3>
+                <h3>Pomodoro</h3>
+                <h3>$25</h3>
               </div>
-              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores voluptates id fugit ab hic sapiente ducimus eaque sed repudiandae quibusdam!</p>
+              <p>Spaghetti Pomodoro: Al dente pasta tossed in a rich tomato sauce, infused with garlic, basil, and olive oil, a timeless Italian favorite.</p>
               <button>Order Now!</button>
             </div>
           </div>
 
           <div className="card">
-            <img src="https://images.unsplash.com/photo-1607532941433-304659e8198a?q=80&w=1378&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Greek Salad" />
+            <img src="https://images.pexels.com/photos/566566/pexels-photo-566566.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Greek Salad" />
             <div className='card__content'>
               <div className='card__title'>
-                <h3>Greek Salad</h3>
-                <h3>$13</h3>
+                <h3>Avocado Toast</h3>
+                <h3>$17</h3>
               </div>
-              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores voluptates id fugit ab hic sapiente ducimus eaque sed repudiandae quibusdam!</p>
+              <p>Avocado Toast: Creamy avocado on artisan bread, topped with sea salt and olive oil.It's an excelent starter</p>
               <button>Order Now!</button>
             </div>
           </div>
@@ -149,11 +144,14 @@ function Main() {
 <div className="forth__container__textblock">
   <h1>Little Lemon</h1>
   <h3>Chicago</h3>
-  <p></p>
+  <p>
+Little Lemon began as a humble dream shared by two friends, Maria and Alex, who had a passion for Mediterranean cuisine. In 2010, they opened their first small eatery in a quaint neighborhood, offering homemade dishes inspired by their travels and family recipes.
+Word quickly spread about the restaurant's fresh flavors and warm hospitality. Customers flocked to Little Lemon for its authentic Mediterranean dishes, from juicy kebabs to tangy salads, all prepared with love and care.
+</p>
 </div>
-<div className="forth__container__pictures__abosolute">
-  <img src="" alt="" />
-  <img src="" alt="" />
+<div className="forth__container__pictures__absolute">
+  <img className="img-1"  src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+  <img className="img-2" src="https://images.unsplash.com/photo-1506368249639-73a05d6f6488?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
 </div>
 </div>
 </div>

@@ -13,27 +13,22 @@ h3{
     font-size: 20px;
 }
 
-.content__wrapper> img{
+.first__container__wrapper> img{
 width: 400px;
 height: 299px;
 border: 1px solid #000000;
 border-radius: 15px;
 }
 
-.content__wrapper{
-    width: 915px;
-    height: 303px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+
 
 .first__container__wrapper{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 445px;
-    background-color: #657871
+    height: 447px;
+    background-color: #657871;
+    gap:60px;
 }
 
 .textblock{
@@ -48,13 +43,24 @@ border-radius: 15px;
     background-color: #F4CE14;
 }
 
+.textblock > h2{
+padding-bottom:20px;
+}
+
+.textblock > p{
+    padding-bottom:20px;
+    }
+
+.textblock > h3 {
+    padding-bottom: 30px;
+}
 
 /*Second container wrapper*/
 
 
 .second__container__wrapper {
     height: 747px;
-    width: 1440px;
+    max-width: 1440px;
     background-color: #edefee;
     display: flex;
     align-items: center;
@@ -78,7 +84,11 @@ border-radius: 15px;
 }
 
 .card__content{
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
 }
 
 .card__content> button {
@@ -105,7 +115,7 @@ line-height: 0px;
     }
 
 .content__wrapper__two{
-width: 911px;
+max-width: 911px;
 height: 456px;
 display: flex;
 align-items: center;
@@ -136,7 +146,7 @@ border-radius: 10px;
 /*Third container wrapper*/
 
 .third__container__wrapper{
-    width: 1440px;
+    max-width: 1440px;
     height: 606px;
     background-color: #d2d4d3;
     display: flex;
@@ -146,7 +156,7 @@ border-radius: 10px;
 }
 
 .content__wrapper__three{
-    width: 860px;
+    max-width: 860px;
     height: 329px;
    display: flex;
    justify-content: center;
@@ -163,8 +173,11 @@ width: 200px;
 height: 220px;
 background: #677D75;
 border-radius: 15px;
-padding: 10px;
+padding: 20px;
 border: 1px solid black;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
 }
 
 .card__name{
@@ -181,6 +194,7 @@ border: 1px solid #000000;
 .third__container__wrapper>h1{
     font-size: 32px;
     line-height: 80px;
+    padding-bottom: 20px;
 }
 
 .stars{
@@ -217,6 +231,335 @@ border: 1px solid #000000;
 .forth__card__wrapper{
 width: 875px;
 height: 409px;
-background-color: lightblue;
+display: flex;
+justify-content: space-between;
+gap:100px;
+padding: 10px;
 }
 
+.forth__container__textblock{
+width: 314px;
+height: 204px;
+}
+
+.forth__container__textblock>h1{
+    padding-bottom: 5px;
+}
+
+.forth__container__textblock>h3{
+    padding-bottom: 20px;
+}
+
+
+.forth__container__pictures__absolute {
+width: 450px;
+height: 409px;
+}
+
+.forth__container__pictures__absolute > img{
+width: 280px;
+height: 307px;
+background-color: grey;
+border-radius: 8px;
+}
+
+.forth__container__pictures__absolute > .img-1{
+position: relative;
+width: auto;
+right:-50px;
+top: 10px;
+}
+
+
+.forth__container__pictures__absolute > .img-2{
+   position: relative;
+   right: 70px;
+   bottom: 220px;
+}
+
+
+
+
+
+/*Media Queries*/
+
+/* Mobile Styles */
+@media only screen and (max-width: 800px) {
+    .first__container__wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: fit-content;
+        background-color: #657871;
+        gap:30px;
+        flex-wrap: wrap;
+        padding: 20px;
+        padding-top: 50px;
+    }
+
+  .first__container__wrapper>img{
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+    .textblock{
+        width: auto;
+        height: auto;
+    }
+
+    .textblock > button {
+        width: 200px;
+        height: 44px;
+        border-radius: 10px;
+        background-color: #F4CE14;
+        font-weight: 600;
+    }
+
+    .textblock > h2{
+    padding-bottom:20px;
+    }
+
+    .textblock > p{
+        padding-bottom:20px;
+        }
+
+    .textblock > h3 {
+        padding-bottom: 30px;
+    }
+
+    
+
+
+    .second__container__wrapper {
+        height: fit-content;
+        width: 100%;
+        background-color: #edefee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+
+      .second__container__title{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: fit-content;
+        width: auto;
+      }
+
+      .second__container__title>button{
+        display: none;
+      }
+
+    .card{
+        width:100%;
+        height: auto;
+        background-color: #657871;
+        border: 1px solid black;
+        border-radius: 15px;
+        margin: 20px;
+    }
+
+    .card>img{
+        width:100%;
+        height: auto;
+        border-radius: 10px 10px 0px 0px;
+
+    }
+
+    .card__content{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .card__content> button {
+    width: 120px;
+    height: 35px;
+    background-color: #F4CE14;
+    border-radius: 15px;
+    border: 1px solid black;
+    }
+
+    .card__title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .card__title > h3{
+    line-height: 0px;
+    }
+
+    .card__title > p{
+        word-wrap: break-word;
+        line-height: 0px;
+        }
+
+    .content__wrapper__two{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+        }
+
+    .second__container__title{
+        width: 100%;
+        height: 97px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding-top: 20px;
+    }
+
+    .second__container__title > h3 {
+        font-size: 32px;
+    }
+
+    .second__container__title > button{
+    display: none;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    .third__container__wrapper{
+        height: fit-content;
+        width: auto;
+        background-color: #d2d4d3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+
+    }
+
+    .content__wrapper__three{
+        width: 100%;
+        height: fit-content;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       flex-direction: column;
+    }
+
+    .testimonials_card_wrapper{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .testimonials__card{
+    width: 100%;
+    background: #677D75;
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid black;
+    }
+
+    .card__name{
+        display: flex;
+        gap: 20px;
+    }
+
+    .card__name>img{
+    width: 88px;
+    height: 82px;
+    border: 1px solid #000000;
+    }
+
+    .third__container__wrapper>h1{
+        font-size: 32px;
+        line-height: 80px;
+        padding-bottom: 20px;
+    }
+
+    .stars{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .star__stack{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .stars>h3{
+      font-size: 18px;
+    }
+
+    .my__custom__star{
+        color:#F4CE14
+    }
+
+
+
+
+
+
+
+
+
+
+    .forth__container__wrapper{
+        height: fit-content;
+        background-color:#657871;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .forth__card__wrapper{
+    width: auto;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap:100px;
+    padding: 20px;
+    }
+
+    .forth__container__textblock{
+    width: auto;
+    height: auto;
+    padding: 20px;
+    }
+
+    .forth__container__textblock>h1{
+        padding-bottom: 5px;
+    }
+
+    .forth__container__textblock>h3{
+        padding-bottom: 20px;
+    }
+
+
+
+
+}
