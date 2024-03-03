@@ -4,7 +4,7 @@
     align-items: center;
     background-color: #E1E0E0;
     color: #fff;
-    padding: 30px 20px;
+    padding: 20px 20px;
   }
 
   .navbab > img {
@@ -22,7 +22,6 @@
 
   .navbar-links li {
     margin-right: 20px;
-    height: 50px;
     padding-top: 10px;
   }
 
@@ -30,7 +29,12 @@
     text-decoration: none;
     color: #5a5151;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+   a:hover{
+    text-decoration: underline;
   }
 
   .hamburger-menu {
