@@ -11,15 +11,20 @@
     max-width: 100%;
     background-color: white;
     border: 2px solid black;
+    background-image: url(https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 form{
-    width: 80%;
+    width: 70%;
     height: 1497px;
     display: flex;
     flex-direction: column;
     gap: 40px;
     background-color: white;
+    padding: 40px;
+    border-radius: 15px;
 }
 
 label{
@@ -64,7 +69,7 @@ form>h3 {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 175px;
+    height: 100px;
     max-width: 100%;
     border-bottom: 1px solid black;
    background-color: white;
@@ -83,6 +88,10 @@ form>h3 {
 input{
     font-size: 20px;
     font-weight: bold;
-    border: 5px solid #5a5151;
+    border: 2px solid #5a5151;
 }
+
+
+
+
 
