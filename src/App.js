@@ -1,29 +1,25 @@
-
-import './App.css';
-import Footer from './Components/Footer';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Main from './Components/Main';
 import Nav from './Components/Nav';
-import React, { useState } from 'react';
 import Reserve from './Components/Reserve';
-
+import Summary from './Components/Summary';
+import Footer from './Components/Footer';
 
 function App() {
-  const [showMainContent, setShowMainContent] = useState(true);
-  const [showReserve, setShowReserve] = useState(false);
-
-  const toggleReserve = () => {
-    setShowMainContent(!showMainContent);
-    setShowReserve(!showReserve);
-  };
-
   return (
-    <div className="App">
-     <Nav/>
-     {showMainContent && <Main onReserveClick={toggleReserve} />}
-     {showReserve && <Reserve />}
-     <Footer/>
-    </div>
+    <Router>
+      <div className="App">
+        <Nav/>
+        <Routes>
+          <Route path="/summary" element={<Summary />} />
+          <Route path="/reserve" element={<Reserve />} />
+          <Route path="/" element={<Main />} />
+        </Routes>
+        <Footer/>
+      </div>
+    </Router>
   );
 }
 
 export default App;
+

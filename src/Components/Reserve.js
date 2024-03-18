@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Reserve.css';
-import Summary from './Summary';
+import { useNavigate } from 'react-router-dom';
+
 
 function Reserve() {
     const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ function Reserve() {
         note: '',
     });
 
-    const [isSubmitted, setIsSubmitted] = useState(false);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,15 +26,12 @@ function Reserve() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData);
-        setIsSubmitted(true);
+        navigate('/summary', { state: { formData: formData } });
     };
 
-    if (isSubmitted) {
-        return <Summary formData={formData} />;
-    }
 
     return (
-        <>
+         <>
             <div className="first__container__wrapper">
                 <div className="textblock">
                     <h2>Reservations</h2>
@@ -99,3 +97,16 @@ function Reserve() {
 }
 
 export default Reserve;
+
+
+
+
+
+
+
+
+
+
+
+
+

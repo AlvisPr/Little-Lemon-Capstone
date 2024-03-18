@@ -4,6 +4,7 @@ import "./Nav.css";
 import Logo from "./Logo.svg"
 import PersonIcon from '@mui/icons-material/Person';
 import ShoppingBasketRoundedIcon from '@mui/icons-material/ShoppingBasketRounded';
+import { useNavigate } from 'react-router-dom';
 
 
 const Nav = () => {
@@ -36,9 +37,15 @@ const Nav = () => {
     window.history.pushState(null, '', `/${section}`);
   };
 
+  const navigate = useNavigate();
+  const goToStart = (e) => {
+    e.preventDefault();
+    navigate('/');
+};
+
   return (
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-        <img src={Logo} alt="" />
+        <img onClick={goToStart} src={Logo} alt="" />
         <ul className={`navbar-links ${isOpen ? 'active' : ''}`}>
           <li><Link onClick={() => handleLinkClick('home')} to="home" smooth={true} duration={1000}>Home</Link></li>
           <li><Link onClick={() => handleLinkClick('reserve_table')} to="reserve" smooth={true} duration={1000}>Reserve</Link></li>

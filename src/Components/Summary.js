@@ -1,13 +1,14 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import "./Summary.css";
 
-function Summary(props) {
-  const { formData } = props;
+function Summary() {
+  const location = useLocation();
+  const formData = location.state.formData;
   const totalGuests = Number(formData.adults) + Number(formData.babies) + Number(formData.toddlers);
 
   return (
     <div>
-
       <div className="first__container__wrapper">
         <div className="textblock">
           <h2>Reservations</h2>
@@ -21,16 +22,12 @@ function Summary(props) {
         />
       </div>
 
-
-
-
       <div className="reserve__table__title">
         <h1>RESERVATION SUMMARY</h1>
       </div>
 
       <div className="container">
         <div className="data__wrapper">
-
           <div className="dataField">
             <h3>First Name:</h3>
             <h3>{formData.firstName}</h3>
@@ -55,18 +52,14 @@ function Summary(props) {
             <h3>Guest Count:</h3>
             <h3>{totalGuests}</h3>
           </div>
-         <div className="buttonField">
-          <button>Back</button>
-          <button>Next</button>
-         </div>
+          <div className="buttonField">
+            <button>Back</button>
+            <button>Next</button>
+          </div>
         </div>
       </div>
-
-
-
-
     </div>
-  )
+  );
 }
 
-export default Summary
+export default Summary;

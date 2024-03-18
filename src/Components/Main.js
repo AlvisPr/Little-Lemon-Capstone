@@ -1,11 +1,18 @@
 import React from 'react'
 import "./Main.css"
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
-import { Element } from 'react-scroll';
+import { Element} from 'react-scroll';
+import { useNavigate } from 'react-router-dom';
 
 
 
-function Main({onReserveClick}) {
+
+function Main() {
+  const navigate = useNavigate();
+
+  const onReserveClick = () => {
+    navigate('/reserve');
+  };
   return (
     <>
     <Element name="reserve">
