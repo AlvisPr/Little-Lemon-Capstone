@@ -1,12 +1,14 @@
 import React from 'react'
 import "./Main.css"
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
+import { Element } from 'react-scroll';
 
 
 
 function Main({onReserveClick}) {
   return (
     <>
+    <Element name="reserve">
       <div className="first__container__wrapper">
           <div className="textblock">
             <h2>Little Lemon</h2>
@@ -16,9 +18,9 @@ function Main({onReserveClick}) {
           </div>
           <img src="https://images.unsplash.com/photo-1458644267420-66bc8a5f21e4?q=80&w=2500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
       </div>
+      </Element>
 
-
-
+      <Element name="menu">
       <div className="second__container__wrapper">
 
         <div className="second__container__title">
@@ -63,7 +65,10 @@ function Main({onReserveClick}) {
           </div>
         </div>
       </div>
+      </Element>
 
+
+      <Element name="reviews">
       <div className="third__container__wrapper">
         <h1>Testimonials</h1>
         <div className="testimonials_card_wrapper">
@@ -134,11 +139,11 @@ function Main({onReserveClick}) {
               </div>
             </div>
           </div>
-
-
         </div>
       </div>
+      </Element>
 
+<Element name="about">
 <div className="forth__container__wrapper">
 <div className="forth__card__wrapper">
 <div className="forth__container__textblock">
@@ -155,7 +160,7 @@ Word quickly spread about the restaurant's fresh flavors and warm hospitality. C
 </div>
 </div>
 </div>
-
+</Element>
     </>
   )
 }
