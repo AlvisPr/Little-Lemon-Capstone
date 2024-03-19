@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
 import './Reserve.css';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
+import Photo from './Photo.jpg';
 
 
 
 function Reserve() {
 
+    const navigate = useNavigate();
 
     const validate = values => {
 
@@ -34,8 +35,8 @@ function Reserve() {
             errors.babies = 'Required';
         }
 
-        if (!values.name) {
-            errors.name = 'Required';
+        if (!values.firstName) {
+            errors.firstName = 'Required';
         }
 
         if (!values.lastName) {
@@ -69,11 +70,15 @@ function Reserve() {
         },
         validate,
         onSubmit: values => {
-            const navigate = useNavigate();
             console.log(values);
             navigate('/summary', { state: { formData: values } });
         },
     });
+
+    const handleChange = (e) => {
+        formik.handleChange(e);
+        formik.setFieldTouched(e.target.name, true, false);
+    };
 
 
     return (
@@ -86,7 +91,7 @@ function Reserve() {
                     <button>Give Us A Like!</button>
                 </div>
                 <img
-                    src="https://images.pexels.com/photos/1537635/pexels-photo-1537635.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    src={Photo}
                     alt=""
                 />
             </div>
@@ -94,10 +99,12 @@ function Reserve() {
                 <h1>Reserve Table</h1>
             </div>
             <div className="reserve__table__wrapper">
+
                 <form onSubmit={formik.handleSubmit}>
                     <div className="input">
                         <label htmlFor="date">Date</label>
-                        <input
+                         <div className="inputWrapper">
+                         <input
                             type="date"
                             name="date"
                             id="date"
@@ -112,10 +119,18 @@ function Reserve() {
                                         : null
                             }
                         />
+                        {formik.touched.date && formik.errors.date ? (
+                        <div className="error-message">{formik.errors.date}</div>
+                    ) : null}
+
+                         </div>
                     </div>
+
+                  
 
                     <div className="input">
                         <label htmlFor="time">Time</label>
+                        <div className="inputWrapper">
                         <input
                             type="time"
                             name="time"
@@ -131,73 +146,92 @@ function Reserve() {
                                         : null
                             }
                         />
+                      
+                      {formik.touched.time && formik.errors.time ? (
+                        <div className="error-message">{formik.errors.time}</div>
+                    ) : null}
 
+                     </div>
                     </div>
                     <hr />
                     <h3>Number Of Dinners</h3>
                     <div className="input">
                         <label htmlFor="adults">Adults</label>
+                        <div className="inputWrapper">
                         <input
                             type="number"
                             name="adults"
                             id="adults"
-                            onChange={formik.handleChange}
+                            onChange={handleChange}
                             required
                             style={
                                 formik.touched.adults && formik.errors.adults
                                     ? { border: '2px solid red' }
-                                    : formik.values.adults > 0
+                                    : formik.values.adults >0
                                         ? { border: '2px solid green' }
-                                        : { border: '2px solid red' }
+                                        :null
                             }
                         />
+                       {formik.touched.adults && formik.errors.adults ? (
+                        <div className="error-message">{formik.errors.adults}</div>
+                    ) : null}
 
                     </div>
+                    </div>
                     <div className="input">
-                        <label htmlFor="toddlers">Toodlers</label>
+                        <label htmlFor="toddlers">Toddlers</label>
+                        <div className="inputWrapper">
                         <input
                             type="number"
                             name="toddlers"
                             id="toddlers"
-                            onChange={formik.handleChange}
+                            onChange={handleChange}
                             required
                             style={
                                 formik.touched.toddlers && formik.errors.toddlers
                                     ? { border: '2px solid red' }
-                                    : formik.values.toddlers > 0
+                                    : formik.values.toddels >0
                                         ? { border: '2px solid green' }
-                                        : { border: '2px solid red' }
+                                        :null
                             }
                         />
-
+                             {formik.touched.toddlers && formik.errors.toddlers ? (
+                        <div className="error-message">{formik.errors.toddlers}</div>
+                    ) : null}
+                    </div>
                     </div>
                     <div className="input">
                         <label htmlFor="babies">Babies</label>
+                        <div className="inputWrapper">
                         <input
                             type="number"
                             name="babies"
                             id="babies"
-                            onChange={formik.handleChange}
+                            onChange={handleChange}
                             required
                             style={
                                 formik.touched.babies && formik.errors.babies
                                     ? { border: '2px solid red' }
-                                    : formik.values.babies > 0
+                                    : formik.values.babies >0
                                         ? { border: '2px solid green' }
-                                        : { border: '2px solid red' }
+                                        :null
                             }
                         />
-
+                             {formik.touched.babies && formik.errors.babies ? (
+                        <div className="error-message">{formik.errors.babies}</div>
+                    ) : null}
+                    </div>
 
                     </div>
                     <hr />
                     <div className="input">
                         <label htmlFor="firstName">Name:</label>
+                        <div className="inputWrapper">
                         <input
                             type="text"
                             name="firstName"
                             id="forFirstName"
-                            onChange={formik.handleChange}
+                            onChange={handleChange}
                             required
                             style={
                                 formik.touched.firstName && formik.errors.firstName
@@ -207,7 +241,10 @@ function Reserve() {
                                         : null
                             }
                         />
-
+                             {formik.touched.firstName && formik.errors.firstName ? (
+                        <div className="error-message">{formik.errors.firstName}</div>
+                    ) : null}
+                    </div>
 
 
 
@@ -217,11 +254,12 @@ function Reserve() {
                     </div>
                     <div className="input">
                         <label htmlFor="lastName">Last Name:</label>
+                        <div className="inputWrapper">
                         <input
                             type="text"
                             name="lastName"
                             id="lastName"
-                            onChange={formik.handleChange}
+                            onChange={handleChange}
                             required
                             style={
                                 formik.touched.lastName && formik.errors.lastName
@@ -232,15 +270,19 @@ function Reserve() {
                             }
 
                         />
-
+                             {formik.touched.lastName && formik.errors.lastName ? (
+                        <div className="error-message">{formik.errors.lastName}</div>
+                    ) : null}
+                    </div>
                     </div>
                     <div className="input">
                         <label htmlFor="email">Email Address</label>
+                        <div className="inputWrapper">
                         <input
                             type="email"
                             name="email"
                             id="email"
-                            onChange={formik.handleChange}
+                            onChange={handleChange}
                             required
                             style={
                                 formik.touched.email && formik.errors.email
@@ -251,10 +293,21 @@ function Reserve() {
                             }
 
                         />
+                          {formik.touched.email && formik.errors.email ? (
+                        <div className="error-message">{formik.errors.email}</div>
+                    ) : null}
+                        </div>
                     </div>
                     <hr />
                     <h3>Note</h3>
-                    <textarea id="message" name="message" rows="4" cols="50"></textarea>
+                    <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    cols="50"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    ></textarea>
 
 
                     <div className='buttonDiv'>

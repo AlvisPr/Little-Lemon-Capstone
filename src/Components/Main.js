@@ -23,7 +23,7 @@ function Main() {
             <p>Experience a taste of the Mediterranean at Little Lemon. Indulge in authentic dishes bursting with flavor, from savory kebabs to vibrant salads. Each bite is a journey to sun-kissed shores, crafted with care and using only the freshest ingredients. Discover your paradise today.</p>
             <button onClick={onReserveClick}>Reserve Table</button>
           </div>
-          <img src="https://images.unsplash.com/photo-1458644267420-66bc8a5f21e4?q=80&w=2500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+          <img src="https://media.istockphoto.com/id/1054319798/es/foto/grupo-de-amigos-felizes-desayunando-en-el-restaurante.jpg?s=612x612&w=0&k=20&c=0P7WmrLoHGH-9tfNa6_Trt86dllqX1C34kt9XfA-28o=" alt="" />
       </div>
       </Element>
 

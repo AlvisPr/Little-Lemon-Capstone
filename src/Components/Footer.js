@@ -34,6 +34,8 @@ function Footer() {
         <li><a href="#">Facebook</a></li>
         <li><a href="#">Instagram</a></li>
         <li><a href="#">X</a></li>
+        <li><a href="#">Linked In</a></li>
+        <li><a href="#">Trip Advisor</a></li>
       </ul>
      </div>
 

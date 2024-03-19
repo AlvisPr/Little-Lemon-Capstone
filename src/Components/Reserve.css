@@ -1,6 +1,7 @@
 .input{
     display:flex;
     justify-content: space-between;
+    opacity: 1;
 }
 
 .reserve__table__wrapper{
@@ -10,8 +11,7 @@
     height: 2049px;
     max-width: 100%;
     background-color: white;
-    border: 2px solid black;
-    background-image: url(https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    background-image: url(https://img.freepik.com/free-photo/dining-terrace-open-restaurant-with-sofas-chairs-tables_114579-2728.jpg?w=1060&t=st=1710827141~exp=1710827741~hmac=08bd28791062ad68b5eebbac7f7e4aa6150aafb840b25642bb3be51eaa41d529);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -22,18 +22,21 @@ form{
     display: flex;
     flex-direction: column;
     gap: 40px;
-    background-color: white;
+    background-color: #e1e0e0;
+    color: #5a5151;
     padding: 40px;
     border-radius: 15px;
+    opacity: 1;
 }
 
 label{
     font-size: 24px;
-    color: black;
+    color: #5a5151;
     font-weight: bold;
+    opacity: 1;
 }
 
-.input>input{
+.inputWrapper>input{
     width: 250px;
     height: 51px;
     border-radius: 15px;
@@ -52,8 +55,8 @@ textarea{
 }
 
 .formButton{
-    width: 400px;
-    height: 50px;
+    width: 200px;
+    height: 44px;
     border-radius: 16px;
     font-size: 24px;
     font-weight: 400;
@@ -63,6 +66,8 @@ textarea{
 form>h3 {
     text-transform: uppercase;
     font-size: 24px;
+    width: fit-content;
+    margin-bottom: 50px;
 }
 
 .reserve__table__title{
@@ -71,10 +76,8 @@ form>h3 {
     justify-content: center;
     height: 100px;
     max-width: 100%;
-    border-bottom: 1px solid black;
-   background-color: white;
-   border: 2px solid black;
-  border-bottom: none;
+    background-color: #e1e0e0;
+    color: #5a5151;
 
 
 }
@@ -85,13 +88,20 @@ form>h3 {
     width: 200px;
 }
 
-input{
+.inputWrapper>input{
     font-size: 20px;
     font-weight: bold;
     border: 2px solid #5a5151;
 }
 
-
+.error-message{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-weight: 800;
+    color: red;
+}
 
 
 
