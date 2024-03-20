@@ -4,6 +4,7 @@ import Nav from './Components/Nav';
 import Reserve from './Components/Reserve';
 import Summary from './Components/Summary';
 import Footer from './Components/Footer';
+import Completed from './Components/Completed';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <div className="App">
         <Nav/>
         <Routes>
+          <Route path="/reservation_completed" element={<Completed/>}></Route>
           <Route path="/summary" element={<Summary />} />
           <Route path="/reserve" element={<Reserve />} />
           <Route path="/" element={<Main />} />

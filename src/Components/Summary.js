@@ -1,11 +1,25 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "./Summary.css";
 
 function Summary() {
   const location = useLocation();
   const formData = location.state.formData;
   const totalGuests = Number(formData.adults) + Number(formData.babies) + Number(formData.toddlers);
+
+
+  const navigate = useNavigate();
+
+  const handleBack = (e) => {
+    e.preventDefault();
+    navigate('/reserve');
+};
+
+const handleNext=(e)=> {
+  e.preventDefault();
+  navigate('/reservation_completed')
+}
 
   return (
     <div>
@@ -53,8 +67,8 @@ function Summary() {
             <h3>{totalGuests}</h3>
           </div>
           <div className="buttonField">
-            <button>Back</button>
-            <button>Next</button>
+            <button onClick={handleBack}>Back</button>
+            <button onClick={handleNext}>Next</button>
           </div>
         </div>
       </div>
