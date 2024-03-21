@@ -2,7 +2,7 @@ import './Reserve.css';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import Photo from './Photo.jpg';
-import { CSSTransition } from 'react-transition-group';
+
 
 
 
@@ -92,7 +92,7 @@ function Reserve() {
                     <button>Give Us A Like!</button>
                 </div>
                 <img
-                    src={Photo}
+                    src="https://images.pexels.com/photos/4552127/pexels-photo-4552127.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                     alt=""
                 />
             </div>
