@@ -2,6 +2,7 @@ import './Reserve.css';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import Photo from './Photo.jpg';
+import { CSSTransition } from 'react-transition-group';
 
 
 
@@ -95,6 +96,7 @@ function Reserve() {
                     alt=""
                 />
             </div>
+
             <div className="reserve__table__title">
                 <h1>Reserve Table</h1>
             </div>
@@ -315,6 +317,7 @@ function Reserve() {
                     </div>
                 </form>
             </div>
+          
         </>
     );
 }

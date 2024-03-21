@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Completed.css";
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function Completed() {
 
@@ -10,6 +11,10 @@ const handleComplete=(e)=>{
   e.preventDefault();
   navigate('/');
 }
+
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
 
   return (
     <div>

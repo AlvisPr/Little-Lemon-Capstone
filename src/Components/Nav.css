@@ -91,3 +91,31 @@ a:hover{
     display: flex; /* Show hamburger menu on smaller screens */
   }
 }
+
+@media (max-width: 1580px){
+  .navbar-links {
+    display: none; /* Hide navbar links on smaller screens */
+    flex-direction: column;
+    background-color: #E1E0E0;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 50px;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .hamburger-menu {
+    display: flex;
+  }
+
+  li:nth-child(6), li:nth-child(7) {
+    display: none;
+  }
+}
+
+
