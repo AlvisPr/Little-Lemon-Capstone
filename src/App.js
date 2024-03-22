@@ -3,17 +3,20 @@ import Nav from './Components/Nav';
 import Footer from './Components/Footer';
 import RoutesWithTransitions from './Components/RoutesWithTransitions';
 import "./App.css";
+import { FormDataProvider } from './Components/FormDataProvider';
 
 
 function App() {
   return (
 
     <div className="App">
-      <Router>
-        <Nav />
-        <RoutesWithTransitions />
-        <Footer />
-    </Router >
+      <FormDataProvider>
+        <Router>
+          <Nav />
+          <RoutesWithTransitions />
+          <Footer />
+        </Router >
+      </FormDataProvider>
     </div>
   );
 }

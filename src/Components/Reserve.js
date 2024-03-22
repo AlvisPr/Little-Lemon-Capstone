@@ -2,86 +2,87 @@ import './Reserve.css';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import Photo from './Photo.jpg';
-
-
-
+import React, { useContext } from 'react';
+import { FormDataContext } from './FormDataProvider';
+import { useLocation } from 'react-router-dom';
 
 function Reserve() {
+  const { setFormData } = useContext(FormDataContext);
+  const location = useLocation();
+  const selectedTable = location.state ? location.state.selectedTable : null; // Check for null state
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const today = new Date();
+  const formattedDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
 
-    const validate = values => {
+  const validate = values => {
+    const errors = {};
 
+    if (!values.date) {
+      errors.date = 'Required';
+    }
 
+    if (!values.time) {
+      errors.time = 'Required';
+    }
 
-        const errors = {};
+    if (!values.adults) {
+      errors.adults = 'Required';
+    }
 
-        if (!values.date) {
-            errors.date = 'Required';
-        }
+    if (!values.toddlers) {
+      errors.toddlers = 'Required';
+    }
 
-        if (!values.time) {
-            errors.time = 'Required';
-        }
+    if (!values.babies) {
+      errors.babies = 'Required';
+    }
 
-        if (!values.adults) {
-            errors.adults = 'Required';
-        }
+    if (!values.firstName) {
+      errors.firstName = 'Required';
+    }
 
-        if (!values.toddlers) {
-            errors.toddlers = 'Required';
-        }
+    if (!values.lastName) {
+      errors.lastName = 'Required';
+    }
 
-        if (!values.babies) {
-            errors.babies = 'Required';
-        }
+    if (!values.email) {
+      errors.email = 'Required';
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+    ) {
+      errors.email = 'Invalid email address';
+    }
 
-        if (!values.firstName) {
-            errors.firstName = 'Required';
-        }
+    return errors;
+  };
 
-        if (!values.lastName) {
-            errors.lastName = 'Required';
-        }
+  const formik = useFormik({
+    initialValues: {
+      date: '',
+      time: '',
+      adults: '',
+      toddlers: '',
+      babies: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      note: '',
+    },
+    validate,
+    onSubmit: values => {
+      // Include the selectedTable in the form data
+      const formDataWithTable = { ...values, selectedTable };
+      setFormData(formDataWithTable);
+      console.log(formDataWithTable);
+      navigate('/select_table', { state: { formData: formDataWithTable } });
+    },
+  });
 
-        if (!values.email) {
-            errors.email = 'Required';
-        } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-        ) {
-            errors.email = 'Invalid email address';
-        }
-
-        return errors;
-    };
-
-    const formik = useFormik({
-
-
-        initialValues: {
-            date: '',
-            time: '',
-            adults: '',
-            toddlers: '',
-            babies: '',
-            firstName: '',
-            lastName: '',
-            email: '',
-            note: '',
-        },
-        validate,
-        onSubmit: values => {
-            console.log(values);
-            navigate('/summary', { state: { formData: values } });
-        },
-    });
-
-    const handleChange = (e) => {
-        formik.handleChange(e);
-        formik.setFieldTouched(e.target.name, true, false);
-    };
-
-
+  const handleChange = (e) => {
+    formik.handleChange(e);
+    formik.setFieldTouched(e.target.name, true, false);
+  };
     return (
         <>
             <div className="first__container__wrapper">
@@ -110,6 +111,8 @@ function Reserve() {
                             type="date"
                             name="date"
                             id="date"
+                            min={formattedDate}
+                            max={formattedDate}
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                             required
@@ -128,8 +131,6 @@ function Reserve() {
                          </div>
                     </div>
 
-                  
-
                     <div className="input">
                         <label htmlFor="time">Time</label>
                         <div className="inputWrapper">
@@ -139,6 +140,8 @@ function Reserve() {
                             id="time"
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
+                            min="12:00"
+                            max="23:00"
                             required
                             style={
                                 formik.touched.time && formik.errors.time
@@ -148,7 +151,7 @@ function Reserve() {
                                         : null
                             }
                         />
-                      
+
                       {formik.touched.time && formik.errors.time ? (
                         <div className="error-message">{formik.errors.time}</div>
                     ) : null}
@@ -164,12 +167,13 @@ function Reserve() {
                             type="number"
                             name="adults"
                             id="adults"
+                            min="0"
                             onChange={handleChange}
                             required
                             style={
                                 formik.touched.adults && formik.errors.adults
                                     ? { border: '2px solid red' }
-                                    : formik.values.adults >0
+                                    : formik.values.adults < 0
                                         ? { border: '2px solid green' }
                                         :null
                             }
@@ -188,11 +192,12 @@ function Reserve() {
                             name="toddlers"
                             id="toddlers"
                             onChange={handleChange}
+                            min="0"
                             required
                             style={
                                 formik.touched.toddlers && formik.errors.toddlers
                                     ? { border: '2px solid red' }
-                                    : formik.values.toddels >0
+                                    : formik.values.toddels<0
                                         ? { border: '2px solid green' }
                                         :null
                             }
@@ -209,12 +214,13 @@ function Reserve() {
                             type="number"
                             name="babies"
                             id="babies"
+                            min="0"
                             onChange={handleChange}
                             required
                             style={
                                 formik.touched.babies && formik.errors.babies
                                     ? { border: '2px solid red' }
-                                    : formik.values.babies >0
+                                    : formik.values.babies<0
                                         ? { border: '2px solid green' }
                                         :null
                             }
@@ -247,10 +253,6 @@ function Reserve() {
                         <div className="error-message">{formik.errors.firstName}</div>
                     ) : null}
                     </div>
-
-
-
-
 
 
                     </div>
@@ -317,7 +319,6 @@ function Reserve() {
                     </div>
                 </form>
             </div>
-          
         </>
     );
 }

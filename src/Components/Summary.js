@@ -1,30 +1,28 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { FormDataContext } from './FormDataProvider';
 import "./Summary.css";
 
 function Summary() {
-  const location = useLocation();
-  const formData = location.state.formData;
+  const { formData } = useContext(FormDataContext);
   const totalGuests = Number(formData.adults) + Number(formData.babies) + Number(formData.toddlers);
-
-
   const navigate = useNavigate();
 
+  console.log(formData); 
+  
   const handleBack = (e) => {
     e.preventDefault();
     navigate('/reserve');
-};
+  };
 
-const handleNext=(e)=> {
-  e.preventDefault();
-  navigate('/reservation_completed')
-}
+  const handleNext=(e)=> {
+    e.preventDefault();
+    navigate('/reservation_completed')
+  }
 
-useEffect(() => {
-  window.scrollTo(0, 0);
-}, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div>
@@ -70,6 +68,10 @@ useEffect(() => {
           <div className="dataField">
             <h3>Guest Count:</h3>
             <h3>{totalGuests}</h3>
+          </div>
+          <div className="dataField">
+            <h3>Table:</h3>
+            <h3>{formData.table}</h3>
           </div>
           <div className="buttonField">
             <button onClick={handleBack}>Back</button>

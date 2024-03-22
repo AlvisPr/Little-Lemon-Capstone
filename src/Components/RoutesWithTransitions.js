@@ -5,6 +5,7 @@ import Main from './Main';
 import Reserve from './Reserve';
 import Summary from './Summary';
 import Completed from './Completed';
+import SelectTable from './SelectTable';
 
 
 function RoutesWithTransitions() {
@@ -18,6 +19,7 @@ function RoutesWithTransitions() {
         timeout={1000}
       >
         <Routes location={location}>
+          <Route path="/select_table" element={<SelectTable />} />
           <Route path="/reservation_completed" element={<Completed />} />
           <Route path="/summary" element={<Summary />} />
           <Route path="/reserve" element={<Reserve />} />

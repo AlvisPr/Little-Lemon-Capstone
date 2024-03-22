@@ -1,0 +1,57 @@
+.table__container{
+    display: flex;
+}
+
+
+.content__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2049px;
+    max-width: 100%;
+    background-color: white;
+    background-image: url(https://img.freepik.com/free-photo/dining-terrace-open-restaurant-with-sofas-chairs-tables_114579-2728.jpg?w=1060&t=st=1710827141~exp=1710827741~hmac=08bd28791062ad68b5eebbac7f7e4aa6150aafb840b25642bb3be51eaa41d529);
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: fadeInOut 1s ease;
+}
+
+.table__container__wrapper{
+    width: 70%;
+    height: 1497px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    background-color: white;
+    color: #5a5151;
+    padding: 40px;
+    border-radius: 15px;
+    opacity: 1;
+}
+
+.table__container{
+    width: 80%;
+    height:1000px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    background-color: #e1e0e0;
+    border-radius: 15px;
+}
+
+.select__table__next__button{
+    width: 200px;
+    height: 44px;
+    border-radius: 16px;
+    font-size: 24px;
+    font-weight: 400;
+    background-color: #F4CE14;
+}
+
+.result{
+    font-weight: 800;
+    color: white;
+}
