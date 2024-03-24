@@ -18,19 +18,6 @@ useEffect(() => {
 
   return (
     <div>
-      <div className="first__container__wrapper">
-        <div className="textblock">
-          <h2>Reservations</h2>
-          <h3>Chicago</h3>
-          <p>Secure your spot at Little Lemon for a delightful dining experience! With table reservations, skip the wait and enjoy our fresh, flavorful dishes in a cozy setting. Book now for priority seating and personalized service. Your table awaits!</p>
-          <button>Give Us A Like!</button>
-        </div>
-        <img
-          src="https://images.pexels.com/photos/4551176/pexels-photo-4551176.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt=""
-        />
-      </div>
-
       <div className="reserve__table__title">
         <h1>RESERVED</h1>
       </div>

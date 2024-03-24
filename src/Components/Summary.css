@@ -20,8 +20,8 @@
     display: flex;
     flex-direction: column;
     gap: 150px;
-    background-color: white;
-    padding: 40px;
+    background-color: #e1e0e0;
+    padding: 100px;
     border-radius: 15px;
 
 }
@@ -33,17 +33,16 @@
     height: 2049px;
     max-width: 100%;
     border: 1px solid black;
-    background-image: url(https://img.freepik.com/free-photo/dining-terrace-open-restaurant-with-sofas-chairs-tables_114579-2728.jpg?w=1060&t=st=1710827141~exp=1710827741~hmac=08bd28791062ad68b5eebbac7f7e4aa6150aafb840b25642bb3be51eaa41d529);
-    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     animation: fadeInOut 1s ease-in;
+    background-color: #83918d;;
 }
 
 .buttonField{
     display: flex;
     justify-content: space-between;
-     margin-top: 100px;
+     margin-top: 30px;
 }
 
 .buttonField>button{

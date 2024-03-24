@@ -5,7 +5,7 @@ import './SelectTable.css';
 
 const SelectTable = () => {
   const navigate = useNavigate();
-  const { formData} = useContext(FormDataContext);
+  const { formData, setTableData } = useContext(FormDataContext);
 
   const [tables, setTables] = useState(
     () => JSON.parse(localStorage.getItem('tables')) ||
@@ -22,6 +22,7 @@ const SelectTable = () => {
 
   const selectTable = (index) => {
     setSelectedTable(index);
+    setTableData(index);
     setTables((prevTables) => {
       let newTables = [...prevTables];
       newTables[index] = { reserved: true, reservationData: formData };
@@ -51,21 +52,12 @@ const SelectTable = () => {
     }
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
-      <div className="first__container__wrapper">
-      <div className="textblock">
-                    <h2>Reservations</h2>
-                    <h3>Chicago</h3>
-                    <p>Secure your spot at Little Lemon for a delightful dining experience! With table reservations, skip the wait and enjoy our fresh, flavorful dishes in a cozy setting. Book now for priority seating and personalized service. Your table awaits!</p>
-                    <button>Give Us A Like!</button>
-                </div>
-                <img
-                    src="https://images.pexels.com/photos/4552127/pexels-photo-4552127.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                    alt=""
-                />
-      </div>
-
       <div className="reserve__table__title">
         <h1>Select Table</h1>
       </div>

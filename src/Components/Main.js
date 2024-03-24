@@ -3,6 +3,7 @@ import "./Main.css"
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
 import { Element} from 'react-scroll';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 
@@ -13,6 +14,11 @@ function Main() {
   const onReserveClick = () => {
     navigate('/reserve');
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
     <Element name="reserve">

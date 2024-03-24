@@ -4,11 +4,12 @@ import { FormDataContext } from './FormDataProvider';
 import "./Summary.css";
 
 function Summary() {
-  const { formData } = useContext(FormDataContext);
+  const { formData,tableData} = useContext(FormDataContext);
   const totalGuests = Number(formData.adults) + Number(formData.babies) + Number(formData.toddlers);
   const navigate = useNavigate();
 
   console.log(formData); 
+  console.log(tableData);
   
   const handleBack = (e) => {
     e.preventDefault();
@@ -26,21 +27,9 @@ function Summary() {
 
   return (
     <div>
-      <div className="first__container__wrapper">
-        <div className="textblock">
-          <h2>Reservations</h2>
-          <h3>Chicago</h3>
-          <p>Secure your spot at Little Lemon for a delightful dining experience! With table reservations, skip the wait and enjoy our fresh, flavorful dishes in a cozy setting. Book now for priority seating and personalized service. Your table awaits!</p>
-          <button>Give Us A Like!</button>
-        </div>
-        <img
-          src="https://images.pexels.com/photos/4552127/pexels-photo-4552127.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt=""
-        />
-      </div>
-
+      
       <div className="reserve__table__title">
-        <h1>RESERVATION SUMMARY</h1>
+        <h1>Summary</h1>
       </div>
 
       <div className="container">
@@ -70,8 +59,8 @@ function Summary() {
             <h3>{totalGuests}</h3>
           </div>
           <div className="dataField">
-            <h3>Table:</h3>
-            <h3>{formData.table}</h3>
+            <h3>Table Nr:</h3>
+            <h3>{tableData}</h3>
           </div>
           <div className="buttonField">
             <button onClick={handleBack}>Back</button>
