@@ -7,6 +7,8 @@ function Footer() {
    <div className="fifth__container__wrapper">
     <div className="fifth__content__wrapper">
      <img src={Logo} alt="" />
+
+  
      <div className="navigation">
       <ul>
         <li>Navigation</li>
@@ -21,26 +23,24 @@ function Footer() {
      <div className="contact">
       <ul>
         <li>Contact</li>
-        <li><a href="#">Adress</a></li>
-        <li><a href="#">Phone Number</a></li>
-        <li><a href="#">Email</a></li>
-        <li><a href="#">Reservations</a></li>
+        <li><a href="#">123 Main Street, Anytown, USA</a></li>
+        <li><a href="#"> +1 (555) 123-4567</a></li>
+        <li><a href="#">info@example.com</a></li>
+        <li><a href="#">Reservations:+1 (555) 987-6543 </a></li>
       </ul>
      </div>
 
      <div className="social">
       <ul>
         <li>Social Media</li>
-        <li><a href="#">Facebook</a></li>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">X</a></li>
-        <li><a href="#">Linked In</a></li>
-        <li><a href="#">Trip Advisor</a></li>
+        <li><a href="https://www.facebook.com">Facebook</a></li>
+        <li><a href="https://www.instagram.com">Instagram</a></li>
+        <li><a href="https://www.twitter.com">X</a></li>
+        <li><a href="https://www.linkedin.com">Linked In</a></li>
+        <li><a href="https://www.tripadvisor.com">Trip Advisor</a></li>
       </ul>
      </div>
-
-
-    </div>
+     </div>
    </div>
   )
 }
