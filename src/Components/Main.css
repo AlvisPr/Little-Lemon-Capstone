@@ -268,9 +268,22 @@ top: 10px;
    bottom: 220px;
 }
 
+button {
+    transition: all 0.5s ease;
+  }
+  
+  button:hover {
+    background-color: #ffd500;
+    transform: scale(1.1);
+  }
 
+  img {
+    transition: transform 0.3s ease;
+  }
 
-
+  img:hover {
+    transform: scale(1.01);
+  }
 
 
 @media only screen and (max-width: 800px) {

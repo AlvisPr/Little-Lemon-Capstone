@@ -60,7 +60,7 @@ function Summary() {
           </div>
           <div className="dataField">
             <h3>Table Nr:</h3>
-            <h3>{tableData}</h3>
+            <h3>{tableData + 1}</h3>
           </div>
           <div className="buttonField">
             <button onClick={handleBack}>Back</button>

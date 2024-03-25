@@ -49,7 +49,7 @@ function Main() {
                 <h3>$13</h3>
               </div>
               <p>Classic Greek salad: Crisp lettuce, tomatoes, cucumbers, red onions, olives, and feta cheese, with olive oil and herbs.</p>
-              <button>Order Now!</button>
+              <button onClick={()=> {alert(`This feature isn't available yet`)}}>Order Now!</button>
             </div>
           </div>
 
@@ -61,7 +61,7 @@ function Main() {
                 <h3>$25</h3>
               </div>
               <p>Spaghetti Pomodoro: Al dente pasta tossed in a rich tomato sauce, infused with garlic, basil, and olive oil, a timeless Italian favorite.</p>
-              <button>Order Now!</button>
+              <button onClick={()=> {alert(`This feature isn't available yet`)}}>Order Now!</button>
             </div>
           </div>
 
@@ -73,7 +73,7 @@ function Main() {
                 <h3>$17</h3>
               </div>
               <p>Avocado Toast: Creamy avocado on artisan bread, topped with sea salt and olive oil.It's an excelent starter</p>
-              <button>Order Now!</button>
+              <button onClick={()=> {alert(`This feature isn't available yet`)}}>Order Now!</button>
             </div>
           </div>
         </div>

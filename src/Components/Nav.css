@@ -11,6 +11,7 @@
   z-index: 1000;
 }
 
+
 .navbar.scrolled {
   top: -100%; /* Adjust based on the height of your navbar */
   transition: top 1s;
@@ -40,7 +41,14 @@
 }
 
 a:hover{
-  text-decoration: underline;
+  background-color: #f4ce14;
+  padding: 10px;
+  
+  border-radius: 15px;
+}
+
+a {
+  transition: all 0.3s ease;
 }
 
 .hamburger-menu {
