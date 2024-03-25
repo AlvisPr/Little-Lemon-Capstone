@@ -4,12 +4,12 @@ import Logo from "./Logo.svg"
 
 function Footer() {
   return (
-   <div className="fifth__container__wrapper">
+   <footer className="fifth__container__wrapper">
     <div className="fifth__content__wrapper">
      <img src={Logo} alt="" />
 
   
-     <div className="navigation">
+     <nav className="navigation">
       <ul>
         <li>Navigation</li>
         <li><a href="#">Home</a></li>
@@ -18,9 +18,9 @@ function Footer() {
         <li><a href="#">Reservations</a></li>
         <li><a href="#">Login</a></li>
       </ul>
-     </div>
+     </nav>
 
-     <div className="contact">
+     <address className="contact">
       <ul>
         <li>Contact</li>
         <li><a href="#">123 Main Street, Anytown, USA</a></li>
@@ -28,9 +28,9 @@ function Footer() {
         <li><a href="#">info@example.com</a></li>
         <li><a href="#">Reservations:+1 (555) 987-6543 </a></li>
       </ul>
-     </div>
+     </address>
 
-     <div className="social">
+     <nav className="social">
       <ul>
         <li>Social Media</li>
         <li><a href="https://www.facebook.com">Facebook</a></li>
@@ -39,9 +39,9 @@ function Footer() {
         <li><a href="https://www.linkedin.com">Linked In</a></li>
         <li><a href="https://www.tripadvisor.com">Trip Advisor</a></li>
       </ul>
+     </nav>
      </div>
-     </div>
-   </div>
+   </footer>
   )
 }
 
