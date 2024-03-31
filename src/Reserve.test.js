@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, act } from '@testing-library/react';
-import Reserve from './Reserve';
-import { FormDataContext } from './FormDataProvider';
+import Reserve from './Components/Reserve';
+import { FormDataContext } from './Components/FormDataProvider';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 window.scrollTo = jest.fn();
@@ -65,5 +65,8 @@ describe('Reserve component', () => {
 
   });
 });
+
+
+
 
 
