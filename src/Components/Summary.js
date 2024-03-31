@@ -55,6 +55,10 @@ function Summary() {
             <h3>{formData.time}</h3>
           </div>
           <div className="dataField">
+            <h3>Ocasion</h3>
+            <h3>{formData.occasion}</h3>
+          </div>
+          <div className="dataField">
             <h3>Guest Count:</h3>
             <h3>{totalGuests}</h3>
           </div>

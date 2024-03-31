@@ -157,3 +157,18 @@ form>h3 {
     border-radius: 15px;
 
   }
+
+.inputWrapper>select {
+    width: 293px;
+    height: 55px;
+    border-radius: 15px;
+    background-color: lightgray;
+    padding: 0px 20px 0px 20px;
+}
+
+.inputWrapper>select{
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid #5a5151;
+}
+

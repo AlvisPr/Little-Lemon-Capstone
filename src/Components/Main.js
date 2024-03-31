@@ -19,6 +19,18 @@ function Main() {
     window.scrollTo(0, 0);
   }, []);
 
+  const onButtonClick = () => {
+    const pdfUrl = "/Menu.pdf";
+    const link = document.createElement("a");
+    link.href = pdfUrl;
+    link.download="Menu.pdf";
+    link.target="_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+};
+
+
   return (
     <main>
     <Element name="reserve">
@@ -27,7 +39,7 @@ function Main() {
             <h2>Little Lemon</h2>
             <h3>Chicago</h3>
             <p>Experience a taste of the Mediterranean at Little Lemon. Indulge in authentic dishes bursting with flavor, from savory kebabs to vibrant salads. Each bite is a journey to sun-kissed shores, crafted with care and using only the freshest ingredients. Discover your paradise today.</p>
-            <button onClick={onReserveClick}>Reserve Table</button>
+            <button aria-label="Reserve table" onClick={onReserveClick}>Reserve Table</button>
           </article>
           <img src="https://media.istockphoto.com/id/1054319798/es/foto/grupo-de-amigos-felizes-desayunando-en-el-restaurante.jpg?s=612x612&w=0&k=20&c=0P7WmrLoHGH-9tfNa6_Trt86dllqX1C34kt9XfA-28o=" alt="" />
       </section>
@@ -38,7 +50,7 @@ function Main() {
 
         <header className="second__container__title">
           <h3>This weeks specials</h3>
-          <button>Online Menu</button>
+          <button onClick={onButtonClick}>Menu</button>
         </header>
         <div className="content__wrapper__two">
           <article className="card">
@@ -49,7 +61,7 @@ function Main() {
                 <h3>$13</h3>
               </header>
               <p>Classic Greek salad: Crisp lettuce, tomatoes, cucumbers, red onions, olives, and feta cheese, with olive oil and herbs.</p>
-              <button onClick={()=> {alert(`This feature isn't available yet`)}}>Order Now!</button>
+              <button aria-label="Place order" onClick={()=> {alert(`This feature isn't available yet`)}}>Order Now!</button>
             </div>
           </article>
 
@@ -61,7 +73,7 @@ function Main() {
                 <h3>$25</h3>
               </header>
               <p>Spaghetti Pomodoro: Al dente pasta tossed in a rich tomato sauce, infused with garlic, basil, and olive oil, a timeless Italian favorite.</p>
-              <button onClick={()=> {alert(`This feature isn't available yet`)}}>Order Now!</button>
+              <button aria-label="Place order" onClick={()=> {alert(`This feature isn't available yet`)}}>Order Now!</button>
             </div>
           </article>
 
@@ -73,7 +85,7 @@ function Main() {
                 <h3>$17</h3>
               </header>
               <p>Avocado Toast: Creamy avocado on artisan bread, topped with sea salt and olive oil.It's an excelent starter</p>
-              <button onClick={()=> {alert(`This feature isn't available yet`)}}>Order Now!</button>
+              <button aria-label="Place order" onClick={()=> {alert(`This feature isn't available yet`)}}>Order Now!</button>
             </div>
           </article>
         </div>

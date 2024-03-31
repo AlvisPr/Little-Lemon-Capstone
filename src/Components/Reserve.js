@@ -63,6 +63,12 @@ function Reserve() {
       errors.time = 'The selected time is not available.';
     }
 
+    if (!values.occasion) {
+      errors.occasion = 'Required';
+  } else if (!['birthday', 'anniversary', 'business_meeting', 'casual_dining', 'other'].includes(values.occasion)) {
+      errors.occasion = 'Invalid occasion selected.';
+  }
+
     return errors;
   };
 
@@ -70,6 +76,7 @@ function Reserve() {
     initialValues: {
       date: '',
       time: '',
+      occasion: '',
       adults: '',
       toddlers: '',
       babies: '',
@@ -146,10 +153,45 @@ function Reserve() {
             <div className="reserve__table__wrapper">
 
                 <form onSubmit={formik.handleSubmit}>
+
+
+                <div className="input">
+    <label htmlFor="occasion">Occasion</label>
+    <div className="inputWrapper">
+        <select
+            name="occasion"
+            id="occasion"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            required
+            style={
+                formik.touched.occasion && formik.errors.occasion
+                    ? { border: '2px solid red' }
+                    : formik.values.occasion
+                        ? { border: '2px solid green' }
+                        : null
+            }
+        >
+            <option value=""></option>
+            <option value="birthday">Birthday</option>
+            <option value="anniversary">Anniversary</option>
+            <option value="business_meeting">Business Meeting</option>
+            <option value="casual_dining">Casual Dining</option>
+            <option value="other">Other</option>
+        </select>
+
+        {formik.touched.occasion && formik.errors.occasion ? (
+            <div className="error-message">{formik.errors.occasion}</div>
+        ) : null}
+    </div>
+</div>
+
+
                     <div className="input">
                         <label htmlFor="date">Date</label>
                          <div className="inputWrapper">
                          <input
+                            aria-label='Select Date'
                             type="date"
                             name="date"
                             id="date"
@@ -280,7 +322,7 @@ function Reserve() {
                         <input
                             type="text"
                             name="firstName"
-                            id="forFirstName"
+                            id="firstName"
                             onChange={handleChange}
                             required
                             style={
@@ -357,7 +399,7 @@ function Reserve() {
 
 
                     <div className='buttonDiv'>
-                        <button className="formButton" type="submit">Next</button>
+                        <button className="formButton" type="submit" aria-label="Go to the next page">Next</button>
                     </div>
                 </form>
             </div>
