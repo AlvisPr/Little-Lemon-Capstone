@@ -1,70 +1,25 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#PROJECT SUMMARY
 
-## Available Scripts
+I’ve been working diligently on this capstone project and I’m excited to share the results. I faced some challenges when it came to sharing data across the third component, so I decided to use a context provider to facilitate the process and avoid prop drilling.
 
-In the project directory, you can run:
 
-### `npm start`
+**For navigation**, I used “react-router-dom”. **For scrolling** to a specific section of the app, I used “react-scroll”, and for transition animations, I used ‘react-transition-group’.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**In Reserve.js**, I used the Formik library for form validation. Since consuming external JSON wasn’t possible, I mocked available hours for the time input field. I thought it would be a good idea to store already reserved hours in the browser’s memory cache, so that when going through the reservation flow again, the previously selected hour would no longer be available. This effectively simulates several individuals reserving a table. ReserveTable.js includes unit tests to validate form input.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**SelectTable.js** allows you to choose from available tables. Green tables are available, while red tables are occupied. When you click on an available table, it turns red and, using the context API, updates the time you chose from the previous step. The selected table is also stored in the browser’s cache, so the next time you go through the same flow, mimicking a user, the table would appear red since it was previously reserved and you won't be able to click on it again.
 
-### `npm run build`
+**In Summary.js**, we use the context API again to pass in the data from previous steps of the same cycle. If there’s an issue and you want to change reservation data, you can do so by returning to Reserve.js. If everything is functioning as expected, you proceed to the next component which displays a success message which has the button to bring you the main page.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Main.js, Nav.js, and Footer.js** all follow a semantic structure. In Menu.js, you can download the Little Lemon Menu PDF (This Week’s Specials), which further simulates a real restaurant site.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The ‘Add to Cart’ feature is currently not available.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+All styles are written in CSS, and I’ve added media queries to ensure the page is responsive.
 
-### `npm run eject`
+All the necessary META tags are added to index.html in the public folder.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+NOTE: In case you want to reset the app to its initial state after iterating through the same flow several times, ensuring all available hours and tables are accessible, you would need to clear your web browser's cache
