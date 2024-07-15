@@ -8,8 +8,7 @@ const SelectTable = () => {
   const { formData, setTableData } = useContext(FormDataContext);
 
   const [tables, setTables] = useState(
-    () => JSON.parse(localStorage.getItem('tables')) ||
-      Array(30).fill({ reserved: false, reservationData: null })
+    () => JSON.parse(localStorage.getItem('tables')) || []
   );
   const [selectedTable, setSelectedTable] = useState(null);
   useEffect(() => {
