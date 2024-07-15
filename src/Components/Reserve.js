@@ -113,9 +113,7 @@ function Reserve() {
     formik.setFieldTouched(e.target.name, true, false);
   };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+ 
 
   useEffect(() => {
     const fetchAPI = async (date) => {
