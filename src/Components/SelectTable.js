@@ -1,47 +1,45 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { FormDataContext } from './FormDataProvider';
 import './SelectTable.css';
 
 const SelectTable = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { formData, setTableData } = useContext(FormDataContext);
+  const reservationData = location.state?.formData || formData;
 
-  const [tables, setTables] = useState(
-    () => JSON.parse(localStorage.getItem('tables')) || []
-  );
+  console.log(`This is form data available to SelectTable.js ${JSON.stringify(reservationData, null, 2)}`);
+
+  const [tables, setTables] = useState(() => {
+    const storedTables = JSON.parse(localStorage.getItem('tables'));
+    return storedTables || Array(30).fill({ reserved: false, reservationData: null });
+  });
+
   const [selectedTable, setSelectedTable] = useState(null);
-  useEffect(() => {
-    setTables(() => JSON.parse(localStorage.getItem('tables')) || []);
-  }, []);
 
   useEffect(() => {
-    localStorage.setItem('tables', JSON.stringify(tables));
-  }, [tables]);
+    if (reservationData && reservationData.date && reservationData.time) {
+      const updatedTables = tables.map((table, index) => {
+        if (index === reservationData.selectedTable) {
+          return { ...table, reserved: true, reservationData: reservationData };
+        }
+        return table;
+      });
+      setTables(updatedTables);
+      localStorage.setItem('tables', JSON.stringify(updatedTables));
+    }
+  }, [reservationData,tables]);
 
   const selectTable = (index) => {
     setSelectedTable(index);
     setTableData(index);
     setTables((prevTables) => {
       let newTables = [...prevTables];
-      newTables[index] = { reserved: true, reservationData: formData };
+      newTables[index] = { reserved: true, reservationData: reservationData };
       return newTables;
     });
   };
-
-  useEffect(() => {
-    if (formData?.selectedTable !== undefined) {
-      setSelectedTable(formData.selectedTable);
-      setTables((prevTables) => {
-        let newTables = [...prevTables];
-        newTables[formData.selectedTable] = {
-          reserved: true,
-          reservationData: formData.reservationData,
-        };
-        return newTables;
-      });
-    }
-  }, [formData]);
 
   const goToNextComponent = () => {
     if (selectedTable !== null) {
@@ -51,7 +49,9 @@ const SelectTable = () => {
     }
   };
 
- 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
@@ -79,7 +79,7 @@ const SelectTable = () => {
                 onClick={() => !table.reserved && selectTable(index)}
               >
                 <div className='result'>
-                {table.reserved && table.reservationData ? `Reserved for ${table.reservationData.time}` : `Table ${index + 1}`}
+                  {table.reserved && table.reservationData ? `Reserved for ${table.reservationData.time}` : `Table ${index + 1}`}
                 </div>
               </div>
             ))}
@@ -92,5 +92,3 @@ const SelectTable = () => {
 };
 
 export default SelectTable;
-
-

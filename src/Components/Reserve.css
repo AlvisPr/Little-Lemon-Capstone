@@ -107,7 +107,7 @@ form>h3 {
     margin-top: 10px;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     font-weight: 800;
     color: red;
 }
