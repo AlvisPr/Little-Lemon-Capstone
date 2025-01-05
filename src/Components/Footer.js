@@ -1,24 +1,33 @@
 import React from 'react';
 import './Footer.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF, faInstagram, faTwitter, faYelp } from '@fortawesome/free-brands-svg-icons';
+import Logo from './Logo.svg';
 
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="footer-top">
-        <div className="footer-content">
-          <div className="footer-section useful-links">
-            <h3>Useful Links</h3>
-            <nav>
-              <a href="#home">Home</a>
-              <a href="#menu">Menu</a>
-              <a href="#reviews">Reviews</a>
-              <a href="#about">About</a>
-              <a href="#reservations">Book a Table</a>
-              <a href="#order">Order Online</a>
-            </nav>
+      <div className="footer-content">
+        <div className="footer-main">
+          <div className="footer-logo-section">
+            <img src={Logo} alt="Little Lemon" className="footer-logo" />
+            <div className="social-icons">
+              <a href="https://facebook.com/littlelemon" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <FontAwesomeIcon icon={faFacebookF} />
+              </a>
+              <a href="https://instagram.com/littlelemon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <FontAwesomeIcon icon={faInstagram} />
+              </a>
+              <a href="https://twitter.com/littlelemon" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <FontAwesomeIcon icon={faTwitter} />
+              </a>
+              <a href="https://yelp.com/littlelemon" target="_blank" rel="noopener noreferrer" aria-label="Yelp">
+                <FontAwesomeIcon icon={faYelp} />
+              </a>
+            </div>
           </div>
 
-          <div className="footer-section contact">
+          <div className="footer-section">
             <h3>Contact</h3>
             <div className="contact-info">
               <div className="contact-item">
@@ -36,36 +45,46 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="footer-section hours">
+          <div className="footer-section">
             <h3>Opening Hours</h3>
             <div className="hours-info">
-              <div className="hours-group weekdays">
-                <h4>Weekdays</h4>
-                <p>Monday - Thursday</p>
-                <p className="time">11:00 AM - 9:00 PM</p>
+              <div className="hours-item">
+                <span>Monday - Thursday</span>
+                <span className="time">11:00 AM - 9:00 PM</span>
               </div>
-              <div className="hours-group weekend">
-                <h4>Weekend</h4>
-                <p>Friday - Saturday</p>
-                <p className="time">11:00 AM - 10:00 PM</p>
-                <p>Sunday</p>
-                <p className="time">12:00 PM - 9:00 PM</p>
+              <div className="hours-item">
+                <span>Friday - Saturday</span>
+                <span className="time">11:00 AM - 10:00 PM</span>
+              </div>
+              <div className="hours-item">
+                <span>Sunday</span>
+                <span className="time">12:00 PM - 9:00 PM</span>
               </div>
             </div>
           </div>
+
+          <div className="footer-section">
+            <h3>Quick Links</h3>
+            <nav className="quick-links">
+              <a href="#home">Home</a>
+              <a href="#about">About</a>
+              <a href="#menu">Menu</a>
+              <a href="#reservations">Reservations</a>
+              <a href="#reviews">Reviews</a>
+              <a href="#order">Order Online</a>
+            </nav>
+          </div>
         </div>
       </div>
-      
+
       <div className="footer-bottom">
         <div className="footer-bottom-content">
-          <div className="copyright">
-            <p>&copy; {new Date().getFullYear()} Little Lemon Restaurant. All rights reserved.</p>
-          </div>
-          <div className="footer-links">
+          <p>&copy; {new Date().getFullYear()} Little Lemon. All rights reserved.</p>
+          <div className="legal-links">
             <a href="/privacy">Privacy Policy</a>
-            <span className="separator">|</span>
+            <span className="separator">•</span>
             <a href="/terms">Terms of Service</a>
-            <span className="separator">|</span>
+            <span className="separator">•</span>
             <a href="/accessibility">Accessibility</a>
           </div>
         </div>

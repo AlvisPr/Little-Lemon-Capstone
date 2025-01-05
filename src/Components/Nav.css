@@ -36,18 +36,43 @@
 .navbar-links a {
   text-decoration: none;
   color: #5a5151;
-  font-weight: 500;
-  font-size: 16px;
   font-weight: bold;
+  font-size: 16px;
   display: flex;
   align-items: center;
+  position: relative;
+  padding: 10px;
 }
 
-.navbar-links a i,
-.navbar-links a svg {
-  font-size: 16px;
-  width: 16px;
-  height: 16px;
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: #f4ce14;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+.navbar-links a:hover {
+  color: #495E57;
+  background-color: rgba(244, 206, 20, 0.1);
+  border-radius: 8px;
+}
+
+.navbar-links a:hover::after {
+  width: 80%;
+}
+
+.navbar-links li:nth-last-child(-n+2) a::after {
+  display: none;
+}
+
+.navbar-links li:nth-last-child(-n+2) a:hover {
+  background-color: #f4ce14;
+  transform: translateY(-2px);
 }
 
 /* Style for user and basket icons */
@@ -63,15 +88,11 @@
   margin: 0;
 }
 
-a:hover{
-  background-color: #f4ce14;
-  padding: 10px;
-  
-  border-radius: 15px;
-}
-
-a {
-  transition: all 0.3s ease;
+.navbar-links a i,
+.navbar-links a svg {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
 }
 
 .hamburger-menu {

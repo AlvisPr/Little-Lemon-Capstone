@@ -4,6 +4,7 @@ import { Element } from 'react-scroll';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import StarRoundedIcon from '@mui/icons-material/StarRounded';
+import About from './About';
 
 function Main() {
   const navigate = useNavigate();
@@ -204,30 +205,7 @@ function Main() {
       </Element>
 
       <Element name="about">
-        <section className="forth__container__wrapper">
-          <div className="forth__card__wrapper">
-            <div className="forth__container__textblock">
-              <h1>Little Lemon</h1>
-              <h3>Chicago</h3>
-              <p>
-                Little Lemon began as a humble dream shared by two friends, Maria and Alex, who had a passion for Mediterranean cuisine. In 2010, they opened their first small eatery in a quaint neighborhood, offering homemade dishes inspired by their travels and family recipes.
-                Word quickly spread about the restaurant's fresh flavors and warm hospitality. Customers flocked to Little Lemon for its authentic Mediterranean dishes, from juicy kebabs to tangy salads, all prepared with love and care.
-              </p>
-            </div>
-            <div className="forth__container__pictures__absolute">
-              <img 
-                className="img-1" 
-                src="https://images.unsplash.com/photo-1577106263724-2c8e03bfe9cf?q=80&w=2670&auto=format&fit=crop" 
-                alt="Professional chef preparing Mediterranean dishes in our state-of-the-art kitchen" 
-              />
-              <img 
-                className="img-2" 
-                src="https://images.unsplash.com/photo-1606914501449-5a96b6ce24ca?q=80&w=2670&auto=format&fit=crop" 
-                alt="Artisanal selection of Mediterranean ingredients and spices" 
-              />
-            </div>
-          </div>
-        </section>
+        <About />
       </Element>
     </main>
   );
