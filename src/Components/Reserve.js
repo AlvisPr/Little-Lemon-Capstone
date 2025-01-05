@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import React, { useContext, useEffect, useState } from 'react';
 import { FormDataContext } from './FormDataProvider';
 import { useLocation } from 'react-router-dom';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 function Reserve() {
   const { setFormData } = useContext(FormDataContext);
@@ -55,6 +56,15 @@ function Reserve() {
     } else if (!['birthday', 'anniversary', 'business_meeting', 'casual_dining', 'other'].includes(values.occasion)) {
       errors.occasion = 'Invalid occasion selected.';
     }
+    if (!values.tableLocation) {
+      errors.tableLocation = 'Required';
+    }
+    if (!values.tableType) {
+      errors.tableType = 'Required';
+    }
+    if (!values.tableSize) {
+      errors.tableSize = 'Required';
+    }
     return errors;
   };
   const formik = useFormik({
@@ -69,6 +79,9 @@ function Reserve() {
       lastName: '',
       email: '',
       note: '',
+      tableLocation: '',
+      tableType: '',
+      tableSize: '',
     },
     validate,
     onSubmit: async values => {
@@ -123,246 +136,340 @@ function Reserve() {
     fetchTimes();
   }, [formik.values.date]);
   return (
-    <>
-      <div className="reserve__table__title">
-        <h1>Reserve Table</h1>
-      </div>
-      <div className="reserve__table__wrapper">
-        <form onSubmit={formik.handleSubmit}>
-          <div className="input">
-            <label htmlFor="occasion">Occasion</label>
-            <div className="inputWrapper">
-              <select
-                name="occasion"
-                id="occasion"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                required
-                style={
-                  formik.touched.occasion && formik.errors.occasion
-                    ? { border: '2px solid red' }
-                    : formik.values.occasion
-                      ? { border: '2px solid green' }
-                      : null
-                }
+    <div className="reserve__table__wrapper">
+      <div className="reserve__content">
+        <div className="reserve__form">
+          <h3>Reserve a Table</h3>
+          <form onSubmit={formik.handleSubmit}>
+            <div className="input">
+              <label htmlFor="occasion">Occasion</label>
+              <div className="inputWrapper">
+                <select
+                  name="occasion"
+                  id="occasion"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  required
+                  style={
+                    formik.touched.occasion && formik.errors.occasion
+                      ? { border: '2px solid red' }
+                      : formik.values.occasion
+                        ? { border: '2px solid green' }
+                        : null
+                  }
+                >
+                  <option value=""></option>
+                  <option value="birthday">Birthday</option>
+                  <option value="anniversary">Anniversary</option>
+                  <option value="business_meeting">Business Meeting</option>
+                  <option value="casual_dining">Casual Dining</option>
+                  <option value="other">Other</option>
+                </select>
+                {formik.touched.occasion && formik.errors.occasion ? (
+                  <div className="error-message">{formik.errors.occasion}</div>
+                ) : null}
+              </div>
+            </div>
+            <div className="input">
+              <label htmlFor="date">Date</label>
+              <div className="inputWrapper">
+                <input
+                  aria-label='Select Date'
+                  type="date"
+                  name="date"
+                  id="date"
+                  min={formattedDate}
+                  max={formattedDate}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  required
+                  style={
+                    formik.touched.date && formik.errors.date
+                      ? { border: '2px solid red' }
+                      : formik.values.date
+                        ? { border: '2px solid green' }
+                        : null
+                  }
+                />
+                {formik.touched.date && formik.errors.date ? (
+                  <div className="error-message">{formik.errors.date}</div>
+                ) : null}
+              </div>
+            </div>
+            <div className="input">
+              <label htmlFor="time">Time</label>
+              <div className="inputWrapper">
+                <input
+                  type="time"
+                  name="time"
+                  id="time"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  min="12:00"
+                  max="23:00"
+                  required
+                  style={
+                    formik.touched.time && formik.errors.time
+                      ? { border: '2px solid red' }
+                      : formik.values.time
+                        ? { border: '2px solid green' }
+                        : null
+                  }
+                />
+                {formik.touched.time && formik.errors.time ? (
+                  <div className="error-message">{formik.errors.time}</div>
+                ) : null}
+              </div>
+            </div>
+            <hr />
+            <h3>Select Table</h3>
+            <div className="input">
+              <label htmlFor="tableLocation">Table Location:</label>
+              <div className="inputWrapper">
+                <select
+                  id="tableLocation"
+                  name="tableLocation"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  required
+                  style={
+                    formik.touched.tableLocation && formik.errors.tableLocation
+                      ? { border: '2px solid red' }
+                      : formik.values.tableLocation
+                        ? { border: '2px solid green' }
+                        : null
+                  }
+                >
+                  <option value="">Select Location</option>
+                  <option value="inside">Inside</option>
+                  <option value="outside">Outside</option>
+                </select>
+                {formik.touched.tableLocation && formik.errors.tableLocation ? (
+                  <div className="error-message">{formik.errors.tableLocation}</div>
+                ) : null}
+              </div>
+            </div>
+            <div className="input">
+              <label htmlFor="tableType">Table Type:</label>
+              <div className="inputWrapper">
+                <select
+                  id="tableType"
+                  name="tableType"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  required
+                  style={
+                    formik.touched.tableType && formik.errors.tableType
+                      ? { border: '2px solid red' }
+                      : formik.values.tableType
+                        ? { border: '2px solid green' }
+                        : null
+                  }
+                >
+                  <option value="">Select Type</option>
+                  <option value="booth">Booth</option>
+                  <option value="standard">Standard</option>
+                  <option value="bar">Bar</option>
+                </select>
+                {formik.touched.tableType && formik.errors.tableType ? (
+                  <div className="error-message">{formik.errors.tableType}</div>
+                ) : null}
+              </div>
+            </div>
+            <div className="input">
+              <label htmlFor="tableSize">Table Size:</label>
+              <div className="inputWrapper">
+                <select
+                  id="tableSize"
+                  name="tableSize"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  required
+                  style={
+                    formik.touched.tableSize && formik.errors.tableSize
+                      ? { border: '2px solid red' }
+                      : formik.values.tableSize
+                        ? { border: '2px solid green' }
+                        : null
+                  }
+                >
+                  <option value="">Select Size</option>
+                  <option value="2">2 Persons</option>
+                  <option value="4">4 Persons</option>
+                  <option value="6">6 Persons</option>
+                  <option value="8">8 Persons</option>
+                </select>
+                {formik.touched.tableSize && formik.errors.tableSize ? (
+                  <div className="error-message">{formik.errors.tableSize}</div>
+                ) : null}
+              </div>
+            </div>
+            <hr />
+            <h3>Number Of Dinners</h3>
+            <div className="input">
+              <label htmlFor="adults">Adults</label>
+              <div className="inputWrapper">
+                <input
+                  type="number"
+                  name="adults"
+                  id="adults"
+                  min="0"
+                  onChange={handleChange}
+                  required
+                  style={
+                    formik.touched.adults && formik.errors.adults
+                      ? { border: '2px solid red' }
+                      : (formik.values.adults !== '' && (formik.values.adults === '0' || parseInt(formik.values.adults) >= 0))
+                        ? { border: '2px solid green' }
+                        : null
+                  }
+                />
+                {formik.touched.adults && formik.errors.adults ? (
+                  <div className="error-message">{formik.errors.adults}</div>
+                ) : null}
+              </div>
+            </div>
+            <div className="input">
+              <label htmlFor="toddlers">Toddlers</label>
+              <div className="inputWrapper">
+                <input
+                  type="number"
+                  name="toddlers"
+                  id="toddlers"
+                  onChange={handleChange}
+                  min="0"
+                  required
+                  style={
+                    formik.touched.toddlers && formik.errors.toddlers
+                      ? { border: '2px solid red' }
+                      : (formik.values.toddlers !== '' && (formik.values.toddlers === '0' || parseInt(formik.values.toddlers) >= 0))
+                        ? { border: '2px solid green' }
+                        : null
+                  }
+                />
+                {formik.touched.toddlers && formik.errors.toddlers ? (
+                  <div className="error-message">{formik.errors.toddlers}</div>
+                ) : null}
+              </div>
+            </div>
+            <div className="input">
+              <label htmlFor="babies">Babies</label>
+              <div className="inputWrapper">
+                <input
+                  type="number"
+                  name="babies"
+                  id="babies"
+                  min="0"
+                  onChange={handleChange}
+                  required
+                  style={
+                    formik.touched.babies && formik.errors.babies
+                      ? { border: '2px solid red' }
+                      : (formik.values.babies !== '' && (formik.values.babies === '0' || parseInt(formik.values.babies) >= 0))
+                        ? { border: '2px solid green' }
+                        : null
+                  }
+                />
+                {formik.touched.babies && formik.errors.babies ? (
+                  <div className="error-message">{formik.errors.babies}</div>
+                ) : null}
+              </div>
+            </div>
+            <hr />
+            <div className="input">  
+              <label htmlFor="firstName">Name:</label>
+              <div className="inputWrapper">
+                <input
+                  type="text"
+                  name="firstName"
+                  id="firstName"
+                  onChange={handleChange}
+                  required
+                  style={
+                    formik.touched.firstName && formik.errors.firstName
+                      ? { border: '2px solid red' }
+                      : formik.values.firstName
+                        ? { border: '2px solid green' }
+                        : null
+                  }
+                />
+                {formik.touched.firstName && formik.errors.firstName ? (
+                  <div className="error-message">{formik.errors.firstName}</div>
+                ) : null}
+              </div>
+            </div>
+            <div className="input">
+              <label htmlFor="lastName">Last Name:</label>
+              <div className="inputWrapper">
+                <input
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  onChange={handleChange}
+                  required
+                  style={
+                    formik.touched.lastName && formik.errors.lastName
+                      ? { border: '2px solid red' }
+                      : formik.values.lastName
+                        ? { border: '2px solid green' }
+                        : null
+                  }
+                />
+                {formik.touched.lastName && formik.errors.lastName ? (
+                  <div className="error-message">{formik.errors.lastName}</div>
+                ) : null}
+              </div>
+            </div>
+            <div className="input">
+              <label htmlFor="email">Email Address</label>
+              <div className="inputWrapper">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  onChange={handleChange}
+                  required
+                  style={
+                    formik.touched.email && formik.errors.email
+                      ? { border: '2px solid red' }
+                      : formik.values.email
+                        ? { border: '2px solid green' }
+                        : null
+                  }
+                />
+                {formik.touched.email && formik.errors.email ? (
+                  <div className="error-message">{formik.errors.email}</div>
+                ) : null}
+              </div>
+            </div>
+            <hr />
+            <h3>Note</h3>
+            <div className="input special-requests">
+              <label htmlFor="message">Special Requests:</label>
+              <div className="inputWrapper">
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Let us know if you have any special requirements or preferences..."
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                ></textarea>
+              </div>
+            </div>
+            <div className="button-container">
+              <button 
+                className="circle-button" 
+                type="submit" 
+                onClick={() => document.querySelector('form').requestSubmit()}
+                aria-label="Go to the next page"
               >
-                <option value=""></option>
-                <option value="birthday">Birthday</option>
-                <option value="anniversary">Anniversary</option>
-                <option value="business_meeting">Business Meeting</option>
-                <option value="casual_dining">Casual Dining</option>
-                <option value="other">Other</option>
-              </select>
-              {formik.touched.occasion && formik.errors.occasion ? (
-                <div className="error-message">{formik.errors.occasion}</div>
-              ) : null}
+                <ArrowForwardIcon />
+              </button>
             </div>
-          </div>
-          <div className="input">
-            <label htmlFor="date">Date</label>
-            <div className="inputWrapper">
-              <input
-                aria-label='Select Date'
-                type="date"
-                name="date"
-                id="date"
-                min={formattedDate}
-                max={formattedDate}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                required
-                style={
-                  formik.touched.date && formik.errors.date
-                    ? { border: '2px solid red' }
-                    : formik.values.date
-                      ? { border: '2px solid green' }
-                      : null
-                }
-              />
-              {formik.touched.date && formik.errors.date ? (
-                <div className="error-message">{formik.errors.date}</div>
-              ) : null}
-            </div>
-          </div>
-          <div className="input">
-            <label htmlFor="time">Time</label>
-            <div className="inputWrapper">
-              <input
-                type="time"
-                name="time"
-                id="time"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                min="12:00"
-                max="23:00"
-                required
-                style={
-                  formik.touched.time && formik.errors.time
-                    ? { border: '2px solid red' }
-                    : formik.values.time
-                      ? { border: '2px solid green' }
-                      : null
-                }
-              />
-              {formik.touched.time && formik.errors.time ? (
-                <div className="error-message">{formik.errors.time}</div>
-              ) : null}
-            </div>
-          </div>
-          <hr />
-          <h3>Number Of Dinners</h3>
-          <div className="input">
-            <label htmlFor="adults">Adults</label>
-            <div className="inputWrapper">
-              <input
-                type="number"
-                name="adults"
-                id="adults"
-                min="0"
-                onChange={handleChange}
-                required
-                style={
-                  formik.touched.adults && formik.errors.adults
-                    ? { border: '2px solid red' }
-                    : (formik.values.adults !== '' && (formik.values.adults === '0' || parseInt(formik.values.adults) >= 0))
-                      ? { border: '2px solid green' }
-                      : null
-                }
-              />
-              {formik.touched.adults && formik.errors.adults ? (
-                <div className="error-message">{formik.errors.adults}</div>
-              ) : null}
-            </div>
-          </div>
-          <div className="input">
-            <label htmlFor="toddlers">Toddlers</label>
-            <div className="inputWrapper">
-              <input
-                type="number"
-                name="toddlers"
-                id="toddlers"
-                onChange={handleChange}
-                min="0"
-                required
-                style={
-                  formik.touched.toddlers && formik.errors.toddlers
-                    ? { border: '2px solid red' }
-                    : (formik.values.toddlers !== '' && (formik.values.toddlers === '0' || parseInt(formik.values.toddlers) >= 0))
-                      ? { border: '2px solid green' }
-                      : null
-                }
-              />
-              {formik.touched.toddlers && formik.errors.toddlers ? (
-                <div className="error-message">{formik.errors.toddlers}</div>
-              ) : null}
-            </div>
-          </div>
-          <div className="input">
-            <label htmlFor="babies">Babies</label>
-            <div className="inputWrapper">
-              <input
-                type="number"
-                name="babies"
-                id="babies"
-                min="0"
-                onChange={handleChange}
-                required
-                style={
-                  formik.touched.babies && formik.errors.babies
-                    ? { border: '2px solid red' }
-                    : (formik.values.babies !== '' && (formik.values.babies === '0' || parseInt(formik.values.babies) >= 0))
-                      ? { border: '2px solid green' }
-                      : null
-                }
-              />
-              {formik.touched.babies && formik.errors.babies ? (
-                <div className="error-message">{formik.errors.babies}</div>
-              ) : null}
-            </div>
-          </div>
-          <hr />
-          <div className="input">  
-            <label htmlFor="firstName">Name:</label>
-            <div className="inputWrapper">
-              <input
-                type="text"
-                name="firstName"
-                id="firstName"
-                onChange={handleChange}
-                required
-                style={
-                  formik.touched.firstName && formik.errors.firstName
-                    ? { border: '2px solid red' }
-                    : formik.values.firstName
-                      ? { border: '2px solid green' }
-                      : null
-                }
-              />
-              {formik.touched.firstName && formik.errors.firstName ? (
-                <div className="error-message">{formik.errors.firstName}</div>
-              ) : null}
-            </div>
-          </div>
-          <div className="input">
-            <label htmlFor="lastName">Last Name:</label>
-            <div className="inputWrapper">
-              <input
-                type="text"
-                name="lastName"
-                id="lastName"
-                onChange={handleChange}
-                required
-                style={
-                  formik.touched.lastName && formik.errors.lastName
-                    ? { border: '2px solid red' }
-                    : formik.values.lastName
-                      ? { border: '2px solid green' }
-                      : null
-                }
-              />
-              {formik.touched.lastName && formik.errors.lastName ? (
-                <div className="error-message">{formik.errors.lastName}</div>
-              ) : null}
-            </div>
-          </div>
-          <div className="input">
-            <label htmlFor="email">Email Address</label>
-            <div className="inputWrapper">
-              <input
-                type="email"
-                name="email"
-                id="email"
-                onChange={handleChange}
-                required
-                style={
-                  formik.touched.email && formik.errors.email
-                    ? { border: '2px solid red' }
-                    : formik.values.email
-                      ? { border: '2px solid green' }
-                      : null
-                }
-              />
-              {formik.touched.email && formik.errors.email ? (
-                <div className="error-message">{formik.errors.email}</div>
-              ) : null}
-            </div>
-          </div>
-          <hr />
-          <h3>Note</h3>
-          <textarea
-            id="message"
-            name="message"
-            rows="4"
-            cols="50"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          ></textarea>
-          <div className="buttonDiv">
-            <button className="formButton" type="submit" aria-label="Go to the next page">Next</button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 export default Reserve;
