@@ -2,46 +2,59 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #E1E0E0;
-  color: #fff;
-  padding: 20px 20px;
+  background-color: rgba(255, 255, 255, 0.98);
+  padding: 1rem 5%;
   margin: 0 auto;
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
-  top: -100%; /* Adjust based on the height of your navbar */
-  transition: top 1s;
+  padding: 0.8rem 5%;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
 }
 
 .navbar > img {
-  width: 200px;
+  width: 180px;
   height: auto;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled > img {
+  width: 160px;
 }
 
 .navbar-links {
   display: flex;
   list-style: none;
   align-items: center;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
 }
 
 .navbar-links li {
-  margin-right: 20px;
+  margin: 0;
   display: flex;
   align-items: center;
 }
 
 .navbar-links a {
   text-decoration: none;
-  color: #5a5151;
-  font-weight: bold;
-  font-size: 16px;
+  color: #495E57;
+  font-weight: 600;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   position: relative;
-  padding: 10px;
+  padding: 0.6rem 0.8rem;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
 }
 
 .navbar-links a::after {
@@ -49,64 +62,76 @@
   position: absolute;
   width: 0;
   height: 2px;
-  bottom: 0;
-  left: 50%;
+  bottom: -2px;
+  left: 0;
   background-color: #f4ce14;
-  transition: all 0.3s ease-in-out;
-  transform: translateX(-50%);
+  transition: width 0.3s ease;
 }
 
 .navbar-links a:hover {
-  color: #495E57;
-  background-color: rgba(244, 206, 20, 0.1);
-  border-radius: 8px;
+  color: #333;
 }
 
 .navbar-links a:hover::after {
-  width: 80%;
+  width: 100%;
 }
 
-.navbar-links li:nth-last-child(-n+2) a::after {
-  display: none;
-}
-
-.navbar-links li:nth-last-child(-n+2) a:hover {
-  background-color: #f4ce14;
-  transform: translateY(-2px);
-}
-
-/* Style for user and basket icons */
-.navbar-links li:nth-last-child(-n+2) a {
+/* Style for cart icon */
+.navbar-links li:last-child a {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 0.8rem;
+  border-radius: 50%;
+  background-color: #f4ce14;
+  transition: all 0.3s ease;
 }
 
-.navbar-links li:nth-last-child(-n+2) i,
-.navbar-links li:nth-last-child(-n+2) svg {
+.navbar-links li:last-child a::after {
+  display: none;
+}
+
+.navbar-links li:last-child a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(244, 206, 20, 0.4);
+  background-color: #ffd700;
+}
+
+.navbar-links li:last-child i,
+.navbar-links li:last-child svg {
   margin: 0;
+  font-size: 1.2rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  color: #495E57;
+  transition: all 0.3s ease;
 }
 
-.navbar-links a i,
-.navbar-links a svg {
-  font-size: 16px;
-  width: 16px;
-  height: 16px;
+.navbar-links li:last-child a:hover i,
+.navbar-links li:last-child a:hover svg {
+  color: #333;
 }
 
 .hamburger-menu {
-  display: none; /* Hide by default on larger screens */
+  display: none;
   flex-direction: column;
   cursor: pointer;
-  z-index: 1100;
+  gap: 4px;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu:hover {
+  background-color: rgba(244, 206, 20, 0.1);
 }
 
 .line {
-  width: 25px;
-  height: 3px;
-  background-color: #000000;
-  margin: 3px 0;
+  background-color: #495E57;
+  height: 2px;
+  width: 24px;
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
 @keyframes slideDown {

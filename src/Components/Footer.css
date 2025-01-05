@@ -169,10 +169,13 @@ flex-direction: column;
 }
 
 .footer-section h3 {
-  color: #F4CE14;
-  font-family: 'Markazi Text', serif;
-  font-size: 1.3rem;
+  color: #EDEFEE;
+  font-family: 'Karla', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
   margin: 0;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
 }
 
 /* Contact Section */
@@ -189,15 +192,20 @@ flex-direction: column;
 }
 
 .contact-label {
-  color: #F4CE14;
+  color: #EDEFEE;
+  font-family: 'Karla', sans-serif;
   font-weight: 500;
   font-size: 0.9rem;
+  letter-spacing: 0.02em;
 }
 
 .contact-item p {
-  color: #ffffff;
+  color: #D9D9D9;
+  font-family: 'Karla', sans-serif;
   font-size: 0.9rem;
+  font-weight: 400;
   margin: 0;
+  line-height: 1.5;
 }
 
 /* Hours Section */
@@ -214,11 +222,15 @@ flex-direction: column;
 }
 
 .hours-item span {
+  font-family: 'Karla', sans-serif;
   font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #D9D9D9;
 }
 
 .time {
-  color: #F4CE14;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Quick Links */
@@ -229,9 +241,12 @@ flex-direction: column;
 }
 
 .quick-links a {
-  color: #ffffff;
+  color: #D9D9D9;
   text-decoration: none;
+  font-family: 'Karla', sans-serif;
   font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.5;
   position: relative;
   transition: color 0.3s ease;
   width: fit-content;
@@ -241,15 +256,15 @@ flex-direction: column;
   content: '';
   position: absolute;
   width: 0;
-  height: 2px;
+  height: 1px;
   bottom: -2px;
   left: 0;
-  background-color: #F4CE14;
+  background-color: rgba(255, 255, 255, 0.5);
   transition: width 0.3s ease;
 }
 
 .quick-links a:hover {
-  color: #F4CE14;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .quick-links a:hover::after {
@@ -268,12 +283,16 @@ flex-direction: column;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Karla', sans-serif;
+  font-size: 0.9rem;
+  color: #D9D9D9;
 }
 
 .footer-bottom-content p {
-  color: rgba(255, 255, 255, 0.7);
+  color: #D9D9D9;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
 }
 
 .legal-links {
@@ -283,8 +302,13 @@ flex-direction: column;
 }
 
 .legal-links a {
-  color: rgba(255, 255, 255, 0.7);
+  color: #D9D9D9;
   text-decoration: none;
+  font-family: 'Karla', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
   transition: color 0.3s ease;
   position: relative;
 }
@@ -296,12 +320,12 @@ flex-direction: column;
   height: 1px;
   bottom: -2px;
   left: 0;
-  background-color: #F4CE14;
+  background-color: rgba(255, 255, 255, 0.5);
   transition: width 0.3s ease;
 }
 
 .legal-links a:hover {
-  color: #F4CE14;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .legal-links a:hover::after {
@@ -309,7 +333,7 @@ flex-direction: column;
 }
 
 .separator {
-  color: #F4CE14;
+  color: rgba(255, 255, 255, 0.9);
   font-size: 0.8rem;
 }
 
