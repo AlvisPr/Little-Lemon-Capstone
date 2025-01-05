@@ -11,33 +11,56 @@
   z-index: 1000;
 }
 
-
 .navbar.scrolled {
   top: -100%; /* Adjust based on the height of your navbar */
   transition: top 1s;
 }
 
 .navbar > img {
-  width: 228px;
+  width: 200px;
   height: auto;
 }
 
 .navbar-links {
   display: flex;
   list-style: none;
+  align-items: center;
 }
 
 .navbar-links li {
   margin-right: 20px;
-  padding-top: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .navbar-links a {
   text-decoration: none;
   color: #5a5151;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links a i,
+.navbar-links a svg {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+/* Style for user and basket icons */
+.navbar-links li:nth-last-child(-n+2) a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.navbar-links li:nth-last-child(-n+2) i,
+.navbar-links li:nth-last-child(-n+2) svg {
+  margin: 0;
 }
 
 a:hover{
@@ -125,5 +148,3 @@ a {
     display: none;
   }
 }
-
-
