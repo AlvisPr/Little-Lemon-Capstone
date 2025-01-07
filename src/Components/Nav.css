@@ -9,14 +9,17 @@
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, padding 0.3s ease, background-color 0.3s ease;
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
 }
 
 .navbar.scrolled {
   padding: 0.8rem 5%;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.98);
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  transform: translateZ(0);
 }
 
 .navbar > img {

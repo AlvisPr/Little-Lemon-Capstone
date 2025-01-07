@@ -6,6 +6,7 @@
 .menu-header {
   text-align: center;
   margin-bottom: 4rem;
+  padding: 0 2rem;
 }
 
 .menu-header h2 {
@@ -27,8 +28,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
-  display: grid;
-  gap: 4rem;
+  overflow-x: auto;
 }
 
 .menu-category {
@@ -61,119 +61,199 @@
 
 .menu-items {
   display: grid;
+  grid-template-columns: repeat(auto-fit, 580px);
   gap: 2.5rem;
+  justify-content: center;
+  padding: 1.5rem;
+  min-width: min-content;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .menu-item {
+  width: 580px;
+  height: 240px;
+  min-height: 240px;
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.item-image-container {
+  width: 45%;
+  min-width: 45%;
+  height: 260px;
+  overflow: hidden;
+}
+
+.item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.menu-item:hover .item-image {
+  transform: scale(1.05);
+}
+
+.item-content {
+  width: 55%;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .item-header {
+  height: 40px;
+  min-height: 40px;
+  max-height: 40px;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .item-name {
-  font-family: 'Karla', sans-serif;
-  font-size: 1.3rem;
-  color: #333;
+  font-size: 1.4rem;
   font-weight: 600;
+  color: #333;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
 }
 
 .item-price {
-  font-family: 'Karla', sans-serif;
   font-size: 1.2rem;
-  color: #495E57;
   font-weight: 600;
+  color: #495E57;
+  background: var(--primary-yellow);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
   white-space: nowrap;
 }
 
 .item-description {
-  font-family: 'Karla', sans-serif;
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.5;
   color: #666;
-  margin: 0;
+  margin: 1rem 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .dietary-tags {
   display: flex;
-  gap: 0.8rem;
+  gap: 0.6rem;
   flex-wrap: wrap;
+  margin-top: auto;
 }
 
 .dietary-tag {
   font-family: 'Karla', sans-serif;
   font-size: 0.85rem;
-  color: #666;
-  background-color: #f5f5f5;
-  padding: 0.3rem 0.8rem;
+  color: #495E57;
+  background-color: rgba(73, 94, 87, 0.1);
+  padding: 0.4rem 0.8rem;
   border-radius: 20px;
   text-transform: capitalize;
+  font-weight: 600;
 }
 
-@media (min-width: 768px) {
-  .menu-items {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem 4rem;
-  }
+.order-button {
+  height: 40px;
+  min-height: 40px;
+  max-height: 40px;
+  width: 100%;
+  margin-top: auto;
+  background: #495E57;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
 }
 
-@media (max-width: 767px) {
-  .menu-section {
-    padding: 3rem 0;
-  }
+.order-button:hover {
+  background: #374641;
+}
 
-  .menu-header h2 {
-    font-size: 2.8rem;
-  }
 
-  .menu-subtitle {
-    font-size: 1.1rem;
-  }
 
-  .category-title {
-    font-size: 2rem;
-  }
-
+/* MacBook Pro 1440x900 */
+@media screen and (min-width: 1400px) {
   .menu-container {
-    padding: 0 1.5rem;
-    gap: 3rem;
+    max-width: 1200px;
+    padding: 0;
   }
 
-  .menu-category {
-    padding-bottom: 2rem;
+  .menu-items {
+    grid-template-columns: repeat(2, 580px);
+    gap: 2rem;
   }
 
-  .item-name {
-    font-size: 1.2rem;
-  }
-
-  .item-description {
-    font-size: 0.95rem;
+  .menu-item {
+    max-width: 580px;
   }
 }
 
-@media (max-width: 480px) {
-  .menu-header h2 {
-    font-size: 2.5rem;
+/* Tablets and smaller laptops */
+@media screen and (max-width: 1399px) and (min-width: 768px) {
+  .menu-items {
+    grid-template-columns: 580px;
+    gap: 2.5rem;
   }
+}
 
+/* iPhone 12 (390px) */
+@media screen and (max-width: 767px) {
   .menu-container {
     padding: 0 1rem;
   }
 
-  .item-header {
-    flex-direction: column;
-    gap: 0.3rem;
+  .menu-items {
+    grid-template-columns: 580px;
+    gap: 2rem;
+    padding: 1rem;
   }
-
-  .item-price {
-    font-size: 1.1rem;
+  
+  .menu-item {
+    min-width: unset;
+    width: 100%;
+    height: 380px;
+    min-height: 380px;
+    flex-direction: column;
+  }
+  
+  .item-image-container {
+    width: 100%;
+    height: 180px;
+    min-height: 180px;
+  }
+  
+  .item-content {
+    width: 100%;
+    padding: 1.25rem;
   }
 }

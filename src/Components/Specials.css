@@ -110,15 +110,14 @@
   overflow: hidden;
   box-shadow: 0 4px 6px var(--shadow-light);
   transition: transform var(--transition-normal);
-}
-
-.special-card:hover {
-  transform: translateY(-5px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .special-image {
   width: 100%;
-  height: 200px;
+  aspect-ratio: 16/11;
   overflow: hidden;
 }
 
@@ -134,19 +133,19 @@
 }
 
 .special-content {
-  padding: var(--spacing-xl);
+  padding: var(--spacing-md);
 }
 
 .special-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
 }
 
 .special-header h3 {
   font-family: var(--font-primary);
-  font-size: var(--text-2xl);
+  font-size: var(--text-lg);
   font-weight: var(--font-semibold);
   color: var(--text-primary);
   margin: 0;
@@ -154,17 +153,17 @@
 
 .price {
   font-family: var(--font-secondary);
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
   font-weight: var(--font-semibold);
   color: var(--secondary-salmon);
 }
 
 .description {
   font-family: var(--font-secondary);
-  font-size: var(--text-base);
-  line-height: var(--leading-relaxed);
+  font-size: var(--text-sm);
+  line-height: 1.3;
   color: var(--text-secondary);
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
 }
 
 .order-button {
@@ -191,6 +190,19 @@
   .specials-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-lg);
+  }
+  
+  .special-header h3 {
+    font-size: var(--text-xl);
+  }
+  
+  .price {
+    font-size: var(--text-lg);
+  }
+  
+  .description {
+    font-size: var(--text-sm);
+    margin-bottom: var(--spacing-lg);
   }
 }
 
@@ -235,6 +247,7 @@
 @media (max-width: 480px) {
   .specials-grid {
     grid-template-columns: 1fr;
+    gap: var(--spacing-md);
   }
 
   .title {
@@ -247,6 +260,43 @@
   }
 
   .special-content {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
+  }
+  
+  .special-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+  
+  .special-header h3 {
+    font-size: var(--text-lg);
+  }
+  
+  .price {
+    font-size: var(--text-base);
+  }
+  
+  .description {
+    font-size: var(--text-sm);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .order-button {
+    font-size: var(--text-sm);
+  }
+}
+
+@media (max-width: 360px) {
+  .special-content {
+    padding: var(--spacing-md);
+  }
+  
+  .special-header h3 {
+    font-size: var(--text-base);
+  }
+  
+  .price {
+    font-size: var(--text-sm);
   }
 }

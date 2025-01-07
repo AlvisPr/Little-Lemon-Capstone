@@ -17,18 +17,28 @@ const Nav = () => {
 
   const handleScroll = () => {
     const currentScrollPos = window.scrollY;
-    if (prevScrollPos > currentScrollPos) {
+    const scrollThreshold = 50; // Add a threshold to prevent micro-movements
+    
+    if (currentScrollPos < scrollThreshold) {
       setIsScrolled(false);
-    } else {
-      setIsScrolled(true);
+    } else if (Math.abs(prevScrollPos - currentScrollPos) > 5) { // Only update if scroll difference is significant
+      setIsScrolled(prevScrollPos < currentScrollPos);
     }
     setPrevScrollPos(currentScrollPos);
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    const throttledScroll = () => {
+      if (!window.requestAnimationFrame) {
+        setTimeout(handleScroll, 16);
+        return;
+      }
+      window.requestAnimationFrame(handleScroll);
+    };
+
+    window.addEventListener('scroll', throttledScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', throttledScroll);
     };
   }, [prevScrollPos]);
 
@@ -46,7 +56,6 @@ const Nav = () => {
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <img onClick={goToStart} src={Logo} alt="" />
         <ul className={`navbar-links ${isOpen ? 'active' : ''}`}>
-          <li><Link onClick={() => handleLinkClick('home')} to="home" smooth={true} duration={1000}>Home</Link></li>
           <li><Link onClick={() => handleLinkClick('reserve_table')} to="reserve" smooth={true} duration={1000}>Reserve</Link></li>
           <li><Link onClick={() => handleLinkClick('about')}to="about" smooth={true} duration={1000}>About</Link></li>
           <li><Link onClick={() => handleLinkClick('menu')}to="menu" smooth={true} duration={1000}>Menu</Link></li>

@@ -9,6 +9,12 @@ const SelectTable = () => {
   const { formData, setTableData } = useContext(FormDataContext);
   const reservationData = location.state?.formData || formData;
 
+  useEffect(() => {
+    if (!reservationData || !Object.keys(reservationData).length) {
+      navigate('/reserve');
+    }
+  }, [reservationData, navigate]);
+
   // Define restaurant sections
   const sections = {
     window: { name: 'Window Area', tables: Array(8).fill(null) },

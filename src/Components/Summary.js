@@ -13,7 +13,7 @@ function Summary() {
   
   const handleBack = (e) => {
     e.preventDefault();
-    navigate('/select-table');
+    navigate('/select_table', { state: { formData } });
   };
 
   const handleNext = (e) => {

@@ -7,21 +7,21 @@ const Specials = () => {
       id: 1,
       name: "Greek Salad",
       price: "$12.99",
-      description: "Fresh tomatoes, crisp cucumber, sliced red onion, olives, and feta cheese drizzled with olive oil.",
+      description: "Fresh tomatoes, cucumber, red onion, olives and feta cheese.",
       image: "greek-salad.jpg"
     },
     {
       id: 2,
       name: "Bruschetta",
       price: "$9.99",
-      description: "Grilled bread rubbed with garlic and topped with diced tomatoes, fresh basil, and olive oil.",
+      description: "Grilled bread with tomatoes, fresh basil, and olive oil.",
       image: "bruschetta.jpg"
     },
     {
       id: 3,
       name: "Lemon Dessert",
       price: "$6.99",
-      description: "Light and fluffy lemon-flavored cake with a sweet citrus glaze.",
+      description: "Light and fluffy lemon cake with citrus glaze.",
       image: "lemon-dessert.jpg"
     }
   ];
