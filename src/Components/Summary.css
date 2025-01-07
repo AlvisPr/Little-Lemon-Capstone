@@ -70,40 +70,60 @@
 
 .button__container {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 1rem;
     margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(73, 94, 87, 0.1);
 }
 
-.button__container button {
-    flex: 1;
+.back__button,
+.next__button {
+    width: 2.5rem;
     height: 2.5rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-primary);
+    background-color: #F4CE14;
     border: none;
-    border-radius: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 0;
 }
 
 .back__button {
-    background-color: #e0e0e0;
+    background-color: #F4CE14;
 }
 
-.next__button {
-    background-color: var(--primary-yellow);
+.back__button::before {
+    content: "←";
+    font-size: 1.25rem;
+    color: #495E57;
+    transition: transform 0.3s ease;
 }
 
-.button__container button:hover {
-    box-shadow: 0 0 0 2px rgba(244, 206, 20, 0.15);
-    transform: translateY(-1px);
+.next__button::after {
+    content: "→";
+    font-size: 1.25rem;
+    color: #495E57;
+    transition: transform 0.3s ease;
 }
 
-.button__container button:active {
-    transform: translateY(0);
+.back__button:hover,
+.next__button:hover {
+    background-color: #495E57;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(73, 94, 87, 0.2);
+}
+
+.back__button:hover::before {
+    color: #F4CE14;
+    transform: translateX(-2px);
+}
+
+.next__button:hover::after {
+    color: #F4CE14;
+    transform: translateX(2px);
 }
 
 @media (max-width: 768px) {
