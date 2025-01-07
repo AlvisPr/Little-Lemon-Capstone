@@ -9,43 +9,80 @@ const SelectTable = () => {
   const { formData, setTableData } = useContext(FormDataContext);
   const reservationData = location.state?.formData || formData;
 
-  console.log(`This is form data available to SelectTable.js ${JSON.stringify(reservationData, null, 2)}`);
+  // Define restaurant sections
+  const sections = {
+    window: { name: 'Window Area', tables: Array(8).fill(null) },
+    main: { name: 'Main Dining', tables: Array(12).fill(null) },
+    bar: { name: 'Bar Area', tables: Array(6).fill(null) },
+    outdoor: { name: 'Outdoor Patio', tables: Array(4).fill(null) }
+  };
 
   const [tables, setTables] = useState(() => {
-    const storedTables = JSON.parse(localStorage.getItem('tables'));
-    return storedTables || Array(30).fill({ reserved: false, reservationData: null });
+    try {
+      const storedTables = localStorage.getItem('tables');
+      return storedTables ? JSON.parse(storedTables) : Array(30).fill({ reserved: false });
+    } catch (e) {
+      console.error('Error loading tables:', e);
+      return Array(30).fill({ reserved: false });
+    }
   });
 
   const [selectedTable, setSelectedTable] = useState(null);
 
-  useEffect(() => {
-    if (reservationData && reservationData.date && reservationData.time) {
-      const updatedTables = tables.map((table, index) => {
-        if (index === reservationData.selectedTable) {
-          return { ...table, reserved: true, reservationData: reservationData };
-        }
-        return table;
-      });
-      setTables(updatedTables);
-      localStorage.setItem('tables', JSON.stringify(updatedTables));
+  const selectTable = (sectionIndex, tableIndex) => {
+    const globalIndex = getGlobalIndex(sectionIndex, tableIndex);
+    if (!tables[globalIndex].reserved) {
+      setSelectedTable(globalIndex);
+      setTableData(globalIndex);
     }
-  }, [reservationData,tables]);
+  };
 
-  const selectTable = (index) => {
-    setSelectedTable(index);
-    setTableData(index);
-    setTables((prevTables) => {
-      let newTables = [...prevTables];
-      newTables[index] = { reserved: true, reservationData: reservationData };
-      return newTables;
-    });
+  const getGlobalIndex = (sectionIndex, tableIndex) => {
+    let index = 0;
+    const sectionNames = Object.keys(sections);
+    for (let i = 0; i < sectionIndex; i++) {
+      index += sections[sectionNames[i]].tables.length;
+    }
+    return index + tableIndex;
+  };
+
+  const getTableClassName = (sectionIndex, tableIndex) => {
+    const globalIndex = getGlobalIndex(sectionIndex, tableIndex);
+    let className = 'table__item';
+    if (tables[globalIndex].reserved) {
+      className += ' reserved';
+    } else if (selectedTable === globalIndex) {
+      className += ' selected';
+    } else {
+      className += ' available';
+    }
+    return className;
   };
 
   const goToNextComponent = () => {
-    if (selectedTable !== null) {
-      navigate('/summary');
-    } else {
+    if (selectedTable === null) {
       alert('Please select a table first.');
+      return;
+    }
+
+    // Update the tables array with the new reservation
+    const updatedTables = [...tables];
+    updatedTables[selectedTable] = {
+      reserved: true,
+      reservationData: {
+        ...reservationData,
+        tableNumber: selectedTable + 1
+      }
+    };
+
+    // Save to localStorage
+    try {
+      localStorage.setItem('tables', JSON.stringify(updatedTables));
+      setTables(updatedTables);
+      navigate('/summary');
+    } catch (e) {
+      console.error('Error saving reservation:', e);
+      alert('There was an error saving your reservation. Please try again.');
     }
   };
 
@@ -54,40 +91,42 @@ const SelectTable = () => {
   }, []);
 
   return (
-    <>
-      <div className="reserve__table__title">
-        <h1>Select Table</h1>
-      </div>
-      <div className="content__wrapper">
-        <div className="table__container__wrapper">
-          <div className='table__container'>
-            {tables.map((table, index) => (
-              <div
-                key={index}
-                style={{
-                  width: '80px',
-                  height: '80px',
-                  backgroundColor: table.reserved ? 'red' : 'green',
-                  margin: '10px',
-                  border: '1px solid black',
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderRadius: "15px",
-                  cursor: "pointer"
-                }}
-                onClick={() => !table.reserved && selectTable(index)}
-              >
-                <div className='result'>
-                  {table.reserved && table.reservationData ? `Reserved for ${table.reservationData.time}` : `Table ${index + 1}`}
-                </div>
+    <div className="content__wrapper">
+      <div className="table__container__wrapper">
+        <div className="table__container">
+          <h2>Select Your Table</h2>
+          
+          {Object.entries(sections).map(([sectionKey, section], sectionIndex) => (
+            <div key={sectionKey}>
+              <div className="section__title">{section.name}</div>
+              <div className="section__container">
+                {section.tables.map((_, tableIndex) => {
+                  const globalIndex = getGlobalIndex(sectionIndex, tableIndex);
+                  return (
+                    <div
+                      key={tableIndex}
+                      className={getTableClassName(sectionIndex, tableIndex)}
+                      onClick={() => selectTable(sectionIndex, tableIndex)}
+                    >
+                      <span>
+                        {tables[globalIndex].reserved ? 'Reserved' : `Table ${globalIndex + 1}`}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
-            ))}
-          </div>
-          <button className='select__table__next__button' onClick={goToNextComponent}>Next</button>
+            </div>
+          ))}
+          
+          <button 
+            className="select__table__next__button"
+            onClick={goToNextComponent}
+          >
+            Continue
+          </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

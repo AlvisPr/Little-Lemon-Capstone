@@ -4,7 +4,7 @@ import { FormDataContext } from './FormDataProvider';
 import "./Summary.css";
 
 function Summary() {
-  const { formData,tableData} = useContext(FormDataContext);
+  const { formData, tableData } = useContext(FormDataContext);
   const totalGuests = Number(formData.adults) + Number(formData.babies) + Number(formData.toddlers);
   const navigate = useNavigate();
 
@@ -13,10 +13,10 @@ function Summary() {
   
   const handleBack = (e) => {
     e.preventDefault();
-    navigate('/reserve');
+    navigate('/select-table');
   };
 
-  const handleNext=(e)=> {
+  const handleNext = (e) => {
     e.preventDefault();
     navigate('/reservation_completed')
   }
@@ -26,49 +26,58 @@ function Summary() {
   }, []);
 
   return (
-    <div>
-      
-      <div className="reserve__table__title">
-        <h1>Summary</h1>
-      </div>
+    <div className="content__wrapper">
+      <div className="summary__container">
+        <div className="summary__content">
+          <h2 className="summary__title">Reservation Summary</h2>
+          
+          <div className="data__field">
+            <span className="field__label">First Name</span>
+            <span className="field__value">{formData.firstName}</span>
+          </div>
+          
+          <div className="data__field">
+            <span className="field__label">Last Name</span>
+            <span className="field__value">{formData.lastName}</span>
+          </div>
+          
+          <div className="data__field">
+            <span className="field__label">Email</span>
+            <span className="field__value">{formData.email}</span>
+          </div>
+          
+          <div className="data__field">
+            <span className="field__label">Date</span>
+            <span className="field__value">{formData.date}</span>
+          </div>
+          
+          <div className="data__field">
+            <span className="field__label">Time</span>
+            <span className="field__value">{formData.time}</span>
+          </div>
+          
+          <div className="data__field">
+            <span className="field__label">Occasion</span>
+            <span className="field__value">{formData.occasion}</span>
+          </div>
+          
+          <div className="data__field">
+            <span className="field__label">Number of Guests</span>
+            <span className="field__value">{totalGuests}</span>
+          </div>
+          
+          <div className="data__field">
+            <span className="field__label">Table Number</span>
+            <span className="field__value">{tableData + 1}</span>
+          </div>
 
-      <div className="container">
-        <div className="data__wrapper">
-          <div className="dataField">
-            <h3>First Name:</h3>
-            <h3>{formData.firstName}</h3>
-          </div>
-          <div className="dataField">
-            <h3>Last Name:</h3>
-            <h3>{formData.lastName}</h3>
-          </div>
-          <div className="dataField">
-            <h3>Email:</h3>
-            <h3>{formData.email}</h3>
-          </div>
-          <div className="dataField">
-            <h3>Date:</h3>
-            <h3>{formData.date}</h3>
-          </div>
-          <div className="dataField">
-            <h3>Time:</h3>
-            <h3>{formData.time}</h3>
-          </div>
-          <div className="dataField">
-            <h3>Ocasion</h3>
-            <h3>{formData.occasion}</h3>
-          </div>
-          <div className="dataField">
-            <h3>Guest Count:</h3>
-            <h3>{totalGuests}</h3>
-          </div>
-          <div className="dataField">
-            <h3>Table Nr:</h3>
-            <h3>{tableData + 1}</h3>
-          </div>
-          <div className="buttonField">
-            <button onClick={handleBack}>Back</button>
-            <button onClick={handleNext}>Next</button>
+          <div className="button__container">
+            <button className="back__button" onClick={handleBack}>
+              Back to Table Selection
+            </button>
+            <button className="next__button" onClick={handleNext}>
+              Confirm Reservation
+            </button>
           </div>
         </div>
       </div>
