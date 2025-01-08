@@ -53,8 +53,18 @@ section {
 }
 
 @media (max-width: 768px) {
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
   section {
-    padding: var(--spacing-4xl) 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
   }
 }
 

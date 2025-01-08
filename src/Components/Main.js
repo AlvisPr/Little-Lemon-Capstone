@@ -59,7 +59,7 @@ function Main() {
         <section className="second__container__wrapper">
           <div className="specials-header">
             <h3>Featured Menu</h3>
-            <button>Online Menu</button>
+            <button className="desktop-only">Online Menu</button>
           </div>
           <div className="content__wrapper__two">
             <motion.article 
@@ -78,8 +78,8 @@ function Main() {
                   <h3>$13</h3>
                 </header>
                 <p>Our signature Greek salad combines crisp romaine, vine-ripened tomatoes, Kalamata olives, and premium feta cheese, dressed in our house-made Mediterranean vinaigrette.</p>
-                <button aria-label="Order Greek Salad" onClick={() => { alert('Online ordering coming soon!') }}>
-                  Order Now
+                <button className="order-button" aria-label="Add Greek Salad to cart">
+                  Add to Cart
                 </button>
               </div>
             </motion.article>
@@ -100,8 +100,8 @@ function Main() {
                   <h3>$25</h3>
                 </header>
                 <p>Hand-crafted pasta tossed in our slow-simmered tomato sauce, finished with fresh basil, extra virgin olive oil, and aged Parmigiano-Reggiano.</p>
-                <button aria-label="Order Pomodoro" onClick={() => { alert('Online ordering coming soon!') }}>
-                  Order Now
+                <button className="order-button" aria-label="Add Pomodoro to cart">
+                  Add to Cart
                 </button>
               </div>
             </motion.article>
@@ -122,8 +122,8 @@ function Main() {
                   <h3>$17</h3>
                 </header>
                 <p>Grilled artisanal bread topped with marinated tomatoes, fresh basil, garlic, and a drizzle of premium extra virgin olive oil from the Mediterranean coast.</p>
-                <button aria-label="Order Bruschetta" onClick={() => { alert('Online ordering coming soon!') }}>
-                  Order Now
+                <button className="order-button" aria-label="Add Bruschetta to cart">
+                  Add to Cart
                 </button>
               </div>
             </motion.article>
@@ -154,7 +154,7 @@ function Main() {
             <article className="testimonials__card">
               <div className="card__name">
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" 
+                  src="https://images.unsplash.com/photo-1507003211169-887f21d8c804?q=80&w=1000&auto=format&fit=crop" 
                   alt="David, a food enthusiast" 
                 />
                 <h3>David</h3>
