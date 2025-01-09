@@ -133,6 +133,9 @@ function Main() {
 
       <Element name="reviews">
         <section className="third__container__wrapper">
+        <div className="reviews-header">
+              <h3>Customer Reviews</h3>
+            </div>
           <div className="testimonials_card_wrapper">
             <article className="testimonials__card">
               <div className="card__name">
@@ -148,13 +151,15 @@ function Main() {
                   <StarRoundedIcon className='my__custom__star'/>
                   <StarRoundedIcon className='my__custom__star'/>
                 </div>
+                <p>5/5 stars. Amazing food and service! The atmosphere is cozy and inviting. Highly recommend!</p>
               </div>
             </article>
+          
 
             <article className="testimonials__card">
               <div className="card__name">
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-887f21d8c804?q=80&w=1000&auto=format&fit=crop" 
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" 
                   alt="David, a food enthusiast" 
                 />
                 <h3>David</h3>
@@ -165,6 +170,7 @@ function Main() {
                   <StarRoundedIcon className='my__custom__star'/>
                   <StarRoundedIcon className='my__custom__star'/>
                 </div>
+                <p>5/5 stars. Everything was fresh and delicious! The decor added charm. Highly recommend this spot!</p>
               </div>
             </article>
 
@@ -182,6 +188,7 @@ function Main() {
                   <StarRoundedIcon className='my__custom__star'/>
                   <StarRoundedIcon className='my__custom__star'/>
                 </div>
+                <p>5/5 stars. Perfect for a family dinner! Great service and ambiance. Will definitely return soon!</p>
               </div>
             </article>
 
@@ -198,8 +205,10 @@ function Main() {
                   <StarRoundedIcon className='my__custom__star'/>
                   <StarRoundedIcon className='my__custom__star'/>
                 </div>
+                <p>5/5 stars. Best Mediterranean food around! Loved the pita and hummus. Absolutely worth visiting!</p>
               </div>
             </article>
+
           </div>
         </section>
       </Element>
