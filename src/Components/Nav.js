@@ -40,7 +40,7 @@ const Nav = () => {
     return () => {
       window.removeEventListener('scroll', throttledScroll);
     };
-  }, [prevScrollPos]);
+  }, [handleScroll]);
 
   const handleLinkClick = (section) => {
     window.history.pushState(null, '', `/${section}`);
@@ -60,7 +60,7 @@ const Nav = () => {
           <li><Link onClick={() => handleLinkClick('about')}to="about" smooth={true} duration={1000}>About</Link></li>
           <li><Link onClick={() => handleLinkClick('menu')}to="menu" smooth={true} duration={1000}>Menu</Link></li>
           <li><Link onClick={() => handleLinkClick('reviews')}to="reviews" smooth={true} duration={1000}>Reviews</Link></li>
-          <li><a href="#"><ShoppingBasketRoundedIcon fontSize='large'/></a></li>
+          <li><a><ShoppingBasketRoundedIcon fontSize='large'/></a></li>
         </ul>
         <div className="hamburger-menu" onClick={toggleMenu}>
           <div className="line"></div>

@@ -59,7 +59,7 @@ function Main() {
         <section className="second__container__wrapper">
           <div className="specials-header">
             <h3>Featured Menu</h3>
-            <button className="desktop-only">Online Menu</button>
+            <button className="desktop-only" onClick={onButtonClick}>Online Menu</button>
           </div>
           <div className="content__wrapper__two">
             <motion.article 
